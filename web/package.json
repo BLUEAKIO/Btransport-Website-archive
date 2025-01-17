@@ -1,6 +1,6 @@
 {
-  "name": "tokyo-metro-tozai-line",
-  "version": "1.0.0",
+  "name": "BTransportWeb",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
