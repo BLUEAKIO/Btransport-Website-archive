@@ -1,0 +1,50 @@
+.station-list {
+  margin-top: 20px;
+}
+
+.station-list input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.station-container {
+  position: relative;
+}
+
+.station-item {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.station-item:hover {
+  background-color: #f0f0f0;
+}
+
+.station-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .station-list input {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .station-item {
+    padding: 8px;
+    font-size: 14px;
+  }
+}

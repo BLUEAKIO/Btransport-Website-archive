@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tozai Line Information</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Tozai Line Information</h1>
+    </header>
+    <main>
+      <section class="station-list">
+        <h2>Stations</h2>
+        <ul>
+          <li v-for="station in stations" :key="station.id">
+            <span class="station-name">{{ station.name }}</span>
+            <span class="station-time">{{ station.time }} minutes</span>
+          </li>
+        </ul>
+      </section>
+      <section class="line-info">
+        <h2>Line Information</h2>
+        <p>{{ lineInfo.description }}</p>
+        <p><strong>Total Stations:</strong> {{ lineInfo.totalStations }}</p>
+        <p><strong>Total Distance:</strong> {{ lineInfo.totalDistance }} km</p>
+      </section>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>

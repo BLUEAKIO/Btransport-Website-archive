@@ -1,0 +1,35 @@
+[
+  {
+    "name": {
+      "en": "Nakano",
+      "zh": "中野"
+    },
+    "description": {
+      "en": "Transfer to JR Chuo Line",
+      "zh": "可换乘 JR 中央线"
+    },
+    "trainTypes": ["Local", "Rapid"]
+  },
+  {
+    "name": {
+      "en": "Ochiai",
+      "zh": "落合"
+    },
+    "description": {
+      "en": "Transfer to Toei Oedo Line",
+      "zh": "可换乘都营大江户线"
+    },
+    "trainTypes": ["Local"]
+  },
+  {
+    "name": {
+      "en": "Takadanobaba",
+      "zh": "高田马场"
+    },
+    "description": {
+      "en": "Transfer to JR Yamanote Line",
+      "zh": "可换乘 JR 山手线"
+    },
+    "trainTypes": ["Local", "Rapid", "Express"]
+  }
+]
