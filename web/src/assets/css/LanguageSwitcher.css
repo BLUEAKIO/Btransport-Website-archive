@@ -1,51 +1,19 @@
 .language-switcher {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .selected-option {
-    background-color: #ff6600; /* 东京地铁橙色 */
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .selected-option:hover {
-    background-color: #e65c00;
-  }
-  
-  .arrow {
-    margin-left: 8px;
-    font-size: 12px;
-  }
-  
-  .dropdown-options {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    width: 100%;
-  }
-  
-  .dropdown-option {
-    padding: 8px 10px;
-    cursor: pointer;
-    color: #333;
-  }
-  
-  .dropdown-option:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .dropdown-option.active {
-    background-color: #ff6600;
-    color: white;
-  }
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.language-switcher button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2c3e50;
+  font-weight: 500;
+  padding: 5px 10px;
+  transition: color 0.2s;
+}
+
+.language-switcher button:hover {
+  color: #007bff;
+}

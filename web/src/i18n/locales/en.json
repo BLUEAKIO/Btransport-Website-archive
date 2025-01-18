@@ -1,0 +1,37 @@
+{
+  "header": {
+    "title": "Tokyo Metro Tozai Line"
+  },
+  "footer": {
+    "copyright": "© 2023 Tokyo Metro. All rights reserved."
+  },
+  "home": {
+    "welcome": "Welcome to Tokyo Metro Tozai Line!"
+  },
+  "stationList": {
+    "title": "Stations",
+    "stations": {
+      "nakano": "Nakano",
+      "takadanobaba": "Takadanobaba",
+      "waseda": "Waseda"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "lineInfo": "Line Info"
+  },
+  "about": {
+    "title": "About",
+    "content": "This is the about page for Tokyo Metro Tozai Line."
+  },
+  "contact": {
+    "title": "Contact",
+    "content": "Contact us for more information about Tokyo Metro Tozai Line."
+  },
+  "lineInfo": {
+    "title": "Tozai Line Information",
+    "description": "Here is the detailed information about the Tozai Line."
+  }
+}

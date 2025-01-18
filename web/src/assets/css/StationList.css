@@ -1,50 +1,31 @@
 .station-list {
   margin-top: 20px;
+  text-align: center; /* 确保内容居中 */
 }
 
-.station-list input {
-  width: 100%;
-  padding: 10px;
+.station-list h2 {
+  font-size: 1.5rem;
   margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
+  color: #2c3e50;
 }
 
-.station-container {
-  position: relative;
+.station-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.station-item {
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+.station-list li {
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
 }
 
-.station-item:hover {
-  background-color: #f0f0f0;
+.station-list li:hover {
+  background-color: #f8f9fa;
 }
 
-.station-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .station-list input {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .station-item {
-    padding: 8px;
-    font-size: 14px;
-  }
+.station-list li:last-child {
+  border-bottom: none; /* 去掉最后一个列表项的下边框 */
 }

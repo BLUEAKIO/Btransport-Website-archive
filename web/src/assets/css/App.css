@@ -1,81 +1,13 @@
-/* 样式保持不变 */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #2c3e50;
+  background-color: #ffffff;
+}
+
 .app {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  header {
-    background-color: #0066b3; /* 东京地铁蓝色 */
-    color: white;
-    padding: 20px 0;
-    width: 100%;
-  }
-  
-  .header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  header .logo {
-    height: 50px;
-  }
-  
-  h1 {
-    margin: 0;
-    font-size: 24px;
-  }
-  
-  main {
-    flex: 1;
-    padding: 20px 0;
-  }
-  
-  .main-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .line-map img {
-    width: 100%;
-    max-width: 800px;
-    display: block;
-    margin: 20px auto;
-    border-radius: 10px;
-  }
-  
-  footer {
-    background-color: #0066b3; /* 东京地铁蓝色 */
-    color: white;
-    padding: 10px 0;
-    width: 100%;
-  }
-  
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    text-align: center;
-  }
-  
-  /* 响应式设计 */
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 20px;
-    }
-  
-    .line-map img {
-      max-width: 100%;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    header h1 {
-      font-size: 18px;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

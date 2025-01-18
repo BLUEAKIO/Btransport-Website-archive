@@ -1,0 +1,11 @@
+.line-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.line-map {
+  width: 100%;
+  max-width: 800px;
+  display: block;
+  margin: 20px auto;
+}
