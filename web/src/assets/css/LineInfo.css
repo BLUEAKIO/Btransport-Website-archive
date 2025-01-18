@@ -6,6 +6,7 @@
 .search-box {
   margin-bottom: 20px;
 }
+
 .search-box input {
   width: 100%;
   padding: 10px;
@@ -13,11 +14,13 @@
   border-radius: 4px;
   margin-bottom: 10px;
 }
+
 .search-box ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
+
 .search-box li {
   cursor: pointer;
   padding: 5px;
@@ -26,9 +29,11 @@
   border-radius: 4px;
   background-color: white;
 }
+
 .search-box li:hover {
   background-color: #f0f0f0;
 }
+
 .search-box p {
   color: #666;
   font-size: 0.9em;
@@ -38,21 +43,35 @@
 .line {
   margin-bottom: 20px;
 }
+
 .line-header {
   display: flex;
-  align-items: center;
+  align-items: center; /* 确保子元素垂直居中 */
   cursor: pointer;
+  gap: 10px; /* 添加间距，避免使用 margin */
 }
+
+/* 色块样式 */
+.line-color {
+  width: 16px; /* 色块宽度 */
+  height: 16px; /* 色块高度 */
+  border-radius: 4px; /* 圆角 */
+  flex-shrink: 0; /* 防止色块被压缩 */
+}
+
 h3 {
-  margin: 0 10px 0 0;
+  margin: 0; /* 移除默认的 margin */
+  font-size: 1.2em; /* 调整字体大小 */
+  color: inherit; /* 使用默认字体颜色 */
 }
+
 .station-count {
-  margin-right: 10px;
   font-size: 0.9em;
   color: #666;
 }
+
 button {
-  margin-left: auto;
+  margin-left: auto; /* 将按钮推到最右侧 */
   padding: 5px 10px;
   background-color: #007bff;
   color: white;
@@ -60,14 +79,17 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
+
 button:hover {
   background-color: #0056b3;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
   margin: 10px 0;
 }
+
 li {
   cursor: pointer;
   padding: 5px;
@@ -76,6 +98,7 @@ li {
   border-radius: 4px;
   background-color: white;
 }
+
 li:hover {
   background-color: #f0f0f0;
 }

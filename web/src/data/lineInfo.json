@@ -1,85 +1,323 @@
 {
   "lines": [
     {
-      "id": "tozai",
+      "id": "hoshino",
       "name": {
-        "zh": "东西线",
-        "en": "Tozai Line"
+        "zh": "星野本线",
+        "en": "Hoshino Main Line"
       },
-      "color": "#009944",
+      "color": "#FFB9D6",
       "stations": [
         {
-          "id": "nakano",
+          "id": "nan-an-center",
           "name": {
-            "zh": "中野",
-            "en": "Nakano"
+            "zh": "南岸中心",
+            "en": "Nan'an Center"
           },
-          "code": "T-01",
-          "lineStationCode": "T01",
+          "lineStationCode": "HH 01",
           "transfers": [
             {
               "line": {
-                "zh": "中央线",
-                "en": "Chuo Line"
+                "zh": "心夏线",
+                "en": "Kokona Line"
               },
               "company": {
-                "zh": "JR东日本",
-                "en": "JR East"
+                "zh": "真纪电铁",
+                "en": "Maki Electric Railway"
               },
-              "stationCode": "JC01"
+              "stationCode": "MK 16"
             },
             {
               "line": {
-                "zh": "地铁丸之内线",
-                "en": "Marunouchi Line"
+                "zh": "C线",
+                "en": "C Line"
               },
               "company": {
-                "zh": "东京地铁",
-                "en": "Tokyo Metro"
+                "zh": "彗星快线",
+                "en": "Comet Lake Express (CLE) "
               },
-              "stationCode": "M01"
+              "stationCode": "C 14"
             }
           ]
+        },
+        {
+          "id": "pinghe",
+          "name": {
+            "zh": "冯河",
+            "en": "Pinghe"
+          },
+          "lineStationCode": "HH 02",
+          "transfers": []
+        },
+        {
+          "id": "snowfall",
+          "name": {
+            "zh": "雪降",
+            "en": "Snowfall"
+          },
+          "lineStationCode": "HH 03",
+          "transfers": []
+        },
+        {
+          "id": "kiseki",
+          "name": {
+            "zh": "神业",
+            "en": "Kiseki"
+          },
+          "lineStationCode": "HH 04",
+          "transfers": []
+        },
+        {
+          "id": "rokko",
+          "name": {
+            "zh": "六甲东(新门)",
+            "en": "Rokko (Nieuwpocrt)"
+          },
+          "lineStationCode": "HH 05",
+          "transfers": [
+            {
+              "line": {
+                "zh": "A线",
+                "en": "A Line"
+              },
+              "company": {
+                "zh": "彗星快线",
+                "en": "Comet Lake Express (CLE) "
+              },
+              "stationCode": "A 17"
+            }
+          ]
+        },
+        {
+          "id": "mizuki",
+          "name": {
+            "zh": "水月",
+            "en": "Mizuki"
+          },
+          "lineStationCode": "HH 06",
+          "transfers": []
+        },
+        {
+          "id": "texel",
+          "name": {
+            "zh": "特赛尔",
+            "en": "Texel"
+          },
+          "lineStationCode": "HH 07",
+          "transfers": [
+            {
+              "line": {
+                "zh": "西部环线",
+                "en": "Western Loop"
+              },
+              "company": {
+                "zh": "遴选地铁",
+                "en": "Selection Metro"
+              },
+              "stationCode": "WL 04"
+            }
+          ]
+        },
+        {
+          "id": "arisugawa",
+          "name": {
+            "zh": "有栖川",
+            "en": "Arisugawa"
+          },
+          "lineStationCode": "HH 08",
+          "transfers": []
+        },
+        {
+          "id": "togawa",
+          "name": {
+            "zh": "丰川",
+            "en": "Togawa"
+          },
+          "lineStationCode": "HH 09",
+          "transfers": []
+        },
+        {
+          "id": "neptune",
+          "name": {
+            "zh": "涅普缇努",
+            "en": "Neptune"
+          },
+          "lineStationCode": "HH 10",
+          "transfers": []
+        },
+        {
+          "id": "chitose",
+          "name": {
+            "zh": "千岁",
+            "en": "Chitose"
+          },
+          "lineStationCode": "HH 11",
+          "transfers": []
+        },
+        {
+          "id": "abydos",
+          "name": {
+            "zh": "阿拜多斯",
+            "en": "Abydos"
+          },
+          "lineStationCode": "HH 12",
+          "transfers": []
         }
       ]
     },
     {
-      "id": "yamanote",
+      "id": "shiroko",
       "name": {
-        "zh": "山手线",
-        "en": "Yamanote Line"
+        "zh": "白子线",
+        "en": "Shiroko Line"
       },
-      "color": "#EE7B1A",
+      "color": "#79FEFF",
       "stations": [
         {
-          "id": "shinjuku",
+          "id": "nan-an-center",
           "name": {
-            "zh": "新宿",
-            "en": "Shinjuku"
+            "zh": "南岸中心",
+            "en": "Nan'an Center"
           },
-          "code": "Y-01",
-          "lineStationCode": "JY01",
+          "lineStationCode": "HS 01",
           "transfers": [
             {
               "line": {
-                "zh": "中央线",
-                "en": "Chuo Line"
+                "zh": "心夏线",
+                "en": "Kokona Line"
               },
               "company": {
-                "zh": "JR东日本",
-                "en": "JR East"
+                "zh": "真纪电铁",
+                "en": "Maki Electric Railway"
               },
-              "stationCode": "JC05"
+              "stationCode": "MK 16"
             },
             {
               "line": {
-                "zh": "地铁丸之内线",
-                "en": "Marunouchi Line"
+                "zh": "C线",
+                "en": "C Line"
               },
               "company": {
-                "zh": "东京地铁",
-                "en": "Tokyo Metro"
-              }
+                "zh": "彗星快线",
+                "en": "Comet Lake Express (CLE) "
+              },
+              "stationCode": "C 14"
+            }
+          ]
+        },
+        {
+          "id": "starstreak",
+          "name": {
+            "zh": "星光镇",
+            "en": "Starstreak"
+          },
+          "lineStationCode": "HS 02",
+          "transfers": [
+            {
+              "line": {
+                "zh": "东南主线",
+                "en": "Southeastern Mainline"
+              },
+              "company": {
+                "zh": "科里考斯交通",
+                "en": "Kirkkaus Transport Network"
+              },
+              "stationCode": "MK 16"
+            },
+            {
+              "line": {
+                "zh": "星光线",
+                "en": "Starstreak Connector"
+              },
+              "company": {
+                "zh": "星光铁道",
+                "en": "Starstreak Railway"
+              },
+              "stationCode": "SC 08"
+            }
+          ]
+        },
+        {
+          "id": "highlander",
+          "name": {
+            "zh": "海兰德",
+            "en": "Highlander"
+          },
+          "lineStationCode": "HS 03",
+          "transfers": [
+            {
+              "line": {
+                "zh": "B线",
+                "en": "B Line"
+              },
+              "company": {
+                "zh": "彗星快线",
+                "en": "Comet Lake Express (CLE) "
+              },
+              "stationCode": "B 01"
+            }
+          ]
+        },
+        {
+          "id": "memorial",
+          "name": {
+            "zh": "纪念",
+            "en": "Memorial"
+          },
+          "lineStationCode": "HS 04",
+          "transfers": [
+            {
+              "line": {
+                "zh": "南横线",
+                "en": "Nanheng Line"
+              },
+              "company": {
+                "zh": "东方铁道",
+                "en": "eRAIL"
+              },
+              "stationCode": "ED 02"
+            }
+          ]
+        },
+        {
+          "id": "etelainensaari-central",
+          "name": {
+            "zh": "南岛中央",
+            "en": "Eteläinensaari Central"
+          },
+          "lineStationCode": "HS 05",
+          "transfers": [
+            {
+              "line": {
+                "zh": "日出平原环线",
+                "en": "Auringonnousukenttä Ring"
+              },
+              "company": {
+                "zh": "科里考斯交通",
+                "en": "Kirkkaus Transport Network"
+              },
+              "stationCode": "KA 06"
+            }
+          ]
+        },
+        {
+          "id": "bonin",
+          "name": {
+            "zh": "博南",
+            "en": "Bonin"
+          },
+          "lineStationCode": "HS 06",
+          "transfers": [
+            {
+              "line": {
+                "zh": "博民线",
+                "en": "Bonming Line"
+              },
+              "company": {
+                "zh": "遴选地铁",
+                "en": "Selection Metro"
+              },
+              "stationCode": "BM 01"
             }
           ]
         }

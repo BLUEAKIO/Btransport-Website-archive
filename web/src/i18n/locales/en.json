@@ -3,7 +3,7 @@
     "copyright": "© 2024 BLUEAKIO. All rights reserved."
   },
   "home": {
-    "welcome": "Welcome to Tokyo Metro Tozai Line!"
+    "welcome": "Welcome to BTransport!"
   },
   "nav": {
     "home": "Home",
@@ -11,13 +11,19 @@
     "contact": "Contact",
     "lineInfo": "Line Info"
   },
+  "lineInfo": {
+    "title": "Line Info",
+    "description": "All Line overview page",
+    "hideStations": "Hide Stations",
+    "showStations": "Show Stations"
+  },
   "about": {
     "title": "About",
-    "content": "This is the about page for Tokyo Metro Tozai Line."
+    "content": "This is BTransport, a rail transit line information website"
   },
   "contact": {
     "title": "Contact",
-    "content": "Contact us for more information about Tokyo Metro Tozai Line."
+    "content": "EMail：transport@blueakio.com"
   },
   "common": {
     "back": "Back"
