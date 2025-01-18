@@ -1,11 +1,81 @@
 .line-info {
   padding: 20px;
-  text-align: center;
 }
 
-.line-map {
+/* 搜索框样式 */
+.search-box {
+  margin-bottom: 20px;
+}
+.search-box input {
   width: 100%;
-  max-width: 800px;
-  display: block;
-  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.search-box ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.search-box li {
+  cursor: pointer;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  background-color: white;
+}
+.search-box li:hover {
+  background-color: #f0f0f0;
+}
+.search-box p {
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* 线路和车站列表样式 */
+.line {
+  margin-bottom: 20px;
+}
+.line-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+h3 {
+  margin: 0 10px 0 0;
+}
+.station-count {
+  margin-right: 10px;
+  font-size: 0.9em;
+  color: #666;
+}
+button {
+  margin-left: auto;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0056b3;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+li {
+  cursor: pointer;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  background-color: white;
+}
+li:hover {
+  background-color: #f0f0f0;
 }

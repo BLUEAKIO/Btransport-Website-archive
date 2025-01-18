@@ -1,17 +1,9 @@
 {
   "footer": {
-    "copyright": "© 2024 BLUEAKIO & BTransport"
+    "copyright": "© 2024 BLUEAKIO"
   },
   "home": {
     "welcome": "欢迎来到东京地铁东西线！"
-  },
-  "stationList": {
-    "title": "车站列表",
-    "stations": {
-      "nakano": "中野",
-      "takadanobaba": "高田马场",
-      "waseda": "早稻田"
-    }
   },
   "nav": {
     "home": "首页",
@@ -27,8 +19,12 @@
     "title": "联系我们",
     "content": "联系我们以获取更多关于东京地铁东西线的信息。"
   },
-  "lineInfo": {
-    "title": "东西线信息",
-    "description": "这里是关于东西线的详细信息。"
+  "common": {
+    "back": "返回"
+  },
+  "stationDetails": {
+    "stoppingLines": "经停线路",
+    "otherCompanyLines": "经停的他社线路",
+    "noOtherCompanyLines": "无经停的他社线路"
   }
 }

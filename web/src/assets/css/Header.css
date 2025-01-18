@@ -10,7 +10,7 @@
 .header-container {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* 确保所有子元素垂直居中对齐 */
+  align-items: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -18,40 +18,115 @@
 
 .header-left {
   display: flex;
-  align-items: center; /* 确保 Logo 和导航链接垂直居中对齐 */
-  gap: 20px; /* Logo 和导航链接之间的间距 */
+  align-items: center;
+  gap: 20px;
 }
 
 .logo {
-  height: 40px; /* 固定 Logo 高度 */
+  height: 40px;
 }
 
 .nav {
   display: flex;
-  align-items: center; /* 确保导航链接垂直居中对齐 */
-  gap: 10px; /* 导航链接之间的间距 */
+  align-items: center;
+  gap: 10px;
 }
 
 .nav-link {
   text-decoration: none;
   color: #2c3e50;
   font-weight: 500;
-  padding: 8px 12px; /* 统一内边距 */
-  border-radius: 4px; /* 圆角 */
+  padding: 8px 12px;
+  border-radius: 4px;
   transition: background-color 0.2s, color 0.2s;
-  font-size: 1rem; /* 统一字体大小 */
-  line-height: 1.5; /* 确保文字垂直居中 */
-  height: 20px; /* 统一按钮高度 */
-  display: flex; /* 使用 flexbox 确保内容垂直居中 */
-  align-items: center; /* 确保内容垂直居中 */
+  font-size: 1rem;
+  line-height: 1.5;
+  height: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-link:hover {
   color: #007bff;
-  background-color: #f0f4f8; /* 鼠标悬停时的背景色 */
+  background-color: #f0f4f8;
 }
 
 .header-right {
   display: flex;
-  align-items: center; /* 确保语言切换器垂直居中对齐 */
+  align-items: center;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #2c3e50;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 10px 20px;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobile-nav-link {
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-nav-link:hover {
+  color: #007bff;
+  background-color: #f0f4f8;
+}
+
+.mobile-language-switcher {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.is-open {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .nav, .header-right {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  .mobile-menu.is-open {
+    display: flex;
+  }
 }

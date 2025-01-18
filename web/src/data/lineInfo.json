@@ -1,0 +1,89 @@
+{
+  "lines": [
+    {
+      "id": "tozai",
+      "name": {
+        "zh": "东西线",
+        "en": "Tozai Line"
+      },
+      "color": "#009944",
+      "stations": [
+        {
+          "id": "nakano",
+          "name": {
+            "zh": "中野",
+            "en": "Nakano"
+          },
+          "code": "T-01",
+          "lineStationCode": "T01",
+          "transfers": [
+            {
+              "line": {
+                "zh": "中央线",
+                "en": "Chuo Line"
+              },
+              "company": {
+                "zh": "JR东日本",
+                "en": "JR East"
+              },
+              "stationCode": "JC01"
+            },
+            {
+              "line": {
+                "zh": "地铁丸之内线",
+                "en": "Marunouchi Line"
+              },
+              "company": {
+                "zh": "东京地铁",
+                "en": "Tokyo Metro"
+              },
+              "stationCode": "M01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yamanote",
+      "name": {
+        "zh": "山手线",
+        "en": "Yamanote Line"
+      },
+      "color": "#EE7B1A",
+      "stations": [
+        {
+          "id": "shinjuku",
+          "name": {
+            "zh": "新宿",
+            "en": "Shinjuku"
+          },
+          "code": "Y-01",
+          "lineStationCode": "JY01",
+          "transfers": [
+            {
+              "line": {
+                "zh": "中央线",
+                "en": "Chuo Line"
+              },
+              "company": {
+                "zh": "JR东日本",
+                "en": "JR East"
+              },
+              "stationCode": "JC05"
+            },
+            {
+              "line": {
+                "zh": "地铁丸之内线",
+                "en": "Marunouchi Line"
+              },
+              "company": {
+                "zh": "东京地铁",
+                "en": "Tokyo Metro"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
