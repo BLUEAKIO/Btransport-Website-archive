@@ -56,17 +56,17 @@
 export default {
   data() {
     return {
-      lines: [], // 默认值为空数组
-      showStations: {},
-      searchQuery: '',
-      filteredStations: [],
+      lines: [], // 所有线路数据
+      showStations: {}, // 控制每条线路的车站列表显示状态
+      searchQuery: '', // 搜索框输入内容
+      filteredStations: [], // 过滤后的车站列表
       isLoading: true, // 加载状态
     };
   },
   async created() {
     // 异步加载 lineInfo.json
     try {
-      const response = await fetch('../src/data/lineInfo.json'); // 确保路径正确
+      const response = await fetch('/data/lineInfo.json'); // 确保路径正确
       const data = await response.json();
       this.lines = data.lines || []; // 如果 data.lines 为 undefined，使用空数组
       // 初始化 showStations

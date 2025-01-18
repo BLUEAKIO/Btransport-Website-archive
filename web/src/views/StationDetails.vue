@@ -46,8 +46,6 @@
 </template>
 
 <script>
-import lineInfo from '../data/lineInfo.json'; // 确保路径正确
-
 export default {
   data() {
     return {
@@ -67,48 +65,54 @@ export default {
   },
   methods: {
     // 加载车站数据
-    loadStationData() {
-      const lines = lineInfo.lines || []; // 如果 lineInfo.lines 为 undefined，使用空数组
-      const stationId = this.$route.params.id;
+    async loadStationData() {
+      try {
+        const response = await fetch('/data/lineInfo.json'); // 确保路径正确
+        const lineInfo = await response.json();
+        const lines = lineInfo.lines || []; // 如果 lineInfo.lines 为 undefined，使用空数组
+        const stationId = this.$route.params.id;
 
-      const station = lines
-        .flatMap((line) => line.stations)
-        .find((s) => s.id === stationId);
+        const station = lines
+          .flatMap((line) => line.stations)
+          .find((s) => s.id === stationId);
 
-      if (station) {
-        // 找到所有经停的线路
-        const stationLines = lines
-          .filter((line) =>
-            line.stations.some((s) => s.id === station.id)
-          )
-          .map((line) => {
-            const stationInLine = line.stations.find((s) => s.id === station.id);
-            return {
-              name: line.name, // 线路名称（中英文）
-              color: line.color, // 线路颜色
-              stationCode: stationInLine.lineStationCode || '', // 线路车站编码（如果有）
-            };
-          });
+        if (station) {
+          // 找到所有经停的线路
+          const stationLines = lines
+            .filter((line) =>
+              line.stations.some((s) => s.id === station.id)
+            )
+            .map((line) => {
+              const stationInLine = line.stations.find((s) => s.id === station.id);
+              return {
+                name: line.name, // 线路名称（中英文）
+                color: line.color, // 线路颜色
+                stationCode: stationInLine.lineStationCode || '', // 线路车站编码（如果有）
+              };
+            });
 
-        // 设置车站信息
-        this.station = {
-          ...station,
-          lines: stationLines, // 经停线路
-          transfers: station.transfers
-            ? station.transfers.map((transfer) => ({
-                ...transfer,
-                color: this.getLineColor(transfer.line), // 获取他社线路颜色
-                stationCode: transfer.stationCode || '', // 他社线路车站编码（如果有）
-              }))
-            : [],
-        };
-      } else {
-        this.$router.push('/');
+          // 设置车站信息
+          this.station = {
+            ...station,
+            lines: stationLines, // 经停线路
+            transfers: station.transfers
+              ? station.transfers.map((transfer) => ({
+                  ...transfer,
+                  color: this.getLineColor(transfer.line), // 获取他社线路颜色
+                  stationCode: transfer.stationCode || '', // 他社线路车站编码（如果有）
+                }))
+              : [],
+          };
+        } else {
+          this.$router.push('/');
+        }
+      } catch (error) {
+        console.error('Failed to load lineInfo.json:', error);
       }
     },
     // 获取他社线路颜色
     getLineColor(lineName) {
-      const line = lineInfo.lines.find((l) => l.name.zh === lineName.zh || l.name.en === lineName.en);
+      const line = this.lines.find((l) => l.name.zh === lineName.zh || l.name.en === lineName.en);
       return line ? line.color : '#ccc'; // 如果找不到线路颜色，使用默认颜色
     },
     // 返回上一页
