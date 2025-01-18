@@ -51,6 +51,7 @@ export default {
     return {
       station: {}, // 车站信息
       currentLocale: this.$i18n.locale, // 当前语言
+      lines: [], // 所有线路信息
     };
   },
   created() {
@@ -69,16 +70,16 @@ export default {
       try {
         const response = await fetch('/data/lineInfo.json'); // 确保路径正确
         const lineInfo = await response.json();
-        const lines = lineInfo.lines || []; // 如果 lineInfo.lines 为 undefined，使用空数组
-        const stationId = this.$route.params.id;
+        this.lines = lineInfo.lines || []; // 填充所有线路信息
 
-        const station = lines
+        const stationId = this.$route.params.id;
+        const station = this.lines
           .flatMap((line) => line.stations)
           .find((s) => s.id === stationId);
 
         if (station) {
           // 找到所有经停的线路
-          const stationLines = lines
+          const stationLines = this.lines
             .filter((line) =>
               line.stations.some((s) => s.id === station.id)
             )
@@ -112,6 +113,12 @@ export default {
     },
     // 获取他社线路颜色
     getLineColor(lineName) {
+      if (!this.lines || !Array.isArray(this.lines)) {
+        return '#ccc'; // 如果 this.lines 未定义或不是数组，返回默认颜色
+      }
+      if (!lineName || !lineName.zh || !lineName.en) {
+        return '#ccc'; // 如果 lineName 无效，返回默认颜色
+      }
       const line = this.lines.find((l) => l.name.zh === lineName.zh || l.name.en === lineName.en);
       return line ? line.color : '#ccc'; // 如果找不到线路颜色，使用默认颜色
     },
