@@ -71,7 +71,7 @@ export default {
       this.lines = data.lines || []; // 如果 data.lines 为 undefined，使用空数组
       // 初始化 showStations
       this.showStations = this.lines.reduce((acc, line) => {
-        acc[line.id] = false; // 默认隐藏车站列表
+        acc[line.id] = true; // 默认隐藏车站列表
         return acc;
       }, {});
     } catch (error) {

@@ -10,4 +10,7 @@ export default defineConfig({
       '@': '/src',
     },
   },
+  define: {
+    'import.meta.env.BASE_URL': JSON.stringify('https://transport.blueakio.com'),
+  },
 });
