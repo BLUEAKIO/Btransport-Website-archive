@@ -68,7 +68,9 @@ export default {
     // 加载车站数据
     async loadStationData() {
       try {
-        const response = await fetch('/data/lineInfo.json'); // 确保路径正确
+        // 动态设置路径
+        const baseUrl = process.env.NODE_ENV === 'production' ? '/your-base-path' : '';
+        const response = await fetch(`${baseUrl}/data/lineInfo.json`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
