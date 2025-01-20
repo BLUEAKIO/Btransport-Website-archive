@@ -69,6 +69,9 @@ export default {
     async loadStationData() {
       try {
         const response = await fetch('/data/lineInfo.json'); // 确保路径正确
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         const lineInfo = await response.json();
         this.lines = lineInfo.lines || []; // 填充所有线路信息
 
@@ -109,6 +112,7 @@ export default {
         }
       } catch (error) {
         console.error('Failed to load lineInfo.json:', error);
+        this.$router.push('/'); // 如果加载失败，跳转到首页
       }
     },
     // 获取他社线路颜色
