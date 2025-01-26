@@ -1,0 +1,19 @@
+{
+  "home": {
+    "title": "Home",
+    "welcome": "Welcome to the Metro Website"
+  },
+  "lines": {
+    "title": "Lines",
+    "map": "Interactive Line Map"
+  },
+  "timetables": {
+    "title": "Timetables",
+    "schedule": "Train Schedule"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "email": "Email: support@metro.com",
+    "phone": "Phone: +123 456 7890"
+  }
+}

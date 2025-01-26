@@ -1,0 +1,19 @@
+{
+  "home": {
+    "title": "首页",
+    "welcome": "欢迎访问地铁网站"
+  },
+  "lines": {
+    "title": "线路",
+    "map": "交互式线路图"
+  },
+  "timetables": {
+    "title": "时刻表",
+    "schedule": "列车时刻表"
+  },
+  "contact": {
+    "title": "联系我们",
+    "email": "邮箱: support@metro.com",
+    "phone": "电话: +123 456 7890"
+  }
+}
