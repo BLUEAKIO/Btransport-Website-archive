@@ -8,7 +8,8 @@ import Lines from './pages/Lines';
 import Contact from './pages/Contact';
 import LineDetail from './pages/LineDetail';
 import CompanyDetail from './pages/CompanyDetail';
-import OperationalStatus from './pages/OperationalStatus'; // 导入新的运营情况页面
+import OperationalStatus from './pages/OperationalStatus';
+import './i18n';
 
 const { Content } = Layout;
 
@@ -22,8 +23,8 @@ const App = () => {
           <Route path="/lines" element={<Lines />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/lines/:companyId/:lineId" element={<LineDetail />} />
-          <Route path="/company/:companyId" element={<CompanyDetail />} /> {/* 更新路径 */}
-          <Route path="/train_info" element={<OperationalStatus />} /> {/* 更新路径 */}
+          <Route path="/company/:companyId" element={<CompanyDetail />} />
+          <Route path="/train_info" element={<OperationalStatus />} />
         </Routes>
       </Content>
       <AppFooter />

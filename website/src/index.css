@@ -9,6 +9,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --button-bg-color: #1a1a1a; /* 定义按钮背景颜色变量 */
 }
 
 a {
@@ -18,12 +19,12 @@ a {
 }
 
 a:hover {
-  color: #535bf2;
+  color: #646cff; /* 统一悬停颜色 */
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* 统一字体设置 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -35,7 +36,7 @@ body {
 }
 
 .ant-layout {
-  min-height: 100vh;
+  flex: 1; /* 继承父容器的高度 */
 }
 
 .ant-layout-content {
@@ -58,7 +59,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--button-bg-color); /* 使用变量定义背景颜色 */
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -69,22 +70,28 @@ button:hover {
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 2px solid #646cff; /* 更通用的样式 */
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
+    --button-bg-color: #f9f9f9; /* 更新按钮背景颜色变量 */
   }
 
   a:hover {
-    color: #747bff;
+    color: #646cff; /* 统一悬停颜色 */
   }
+}
 
-  button {
-    background-color: #f9f9f9;
-  }
+/* 公共样式 */
+.ant-table {
+  width: 100%; /* 表格宽度占满父容器 */
+}
+
+.ant-card {
+  width: 100%; /* 卡片宽度占满父容器 */
 }
 
 /* 针对手机端的样式调整 */
@@ -98,12 +105,7 @@ button:focus-visible {
   }
 
   .ant-table {
-    width: 100%; /* 表格宽度占满父容器 */
     overflow-x: auto; /* 允许表格水平滚动 */
-  }
-
-  .ant-card {
-    width: 100%; /* 卡片宽度占满父容器 */
   }
 }
 
@@ -112,13 +114,5 @@ button:focus-visible {
   .ant-layout-content {
     padding: 40px; /* PC端增加内边距 */
     max-width: 1200px; /* 最大宽度为1200px，避免内容过宽 */
-  }
-
-  .ant-table {
-    width: 100%; /* 表格宽度占满父容器 */
-  }
-
-  .ant-card {
-    width: 100%; /* 卡片宽度占满父容器 */
   }
 }
