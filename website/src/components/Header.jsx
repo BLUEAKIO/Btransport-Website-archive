@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Menu, Dropdown } from 'antd';
 import { HomeOutlined, LineChartOutlined, ClockCircleOutlined, ContactsOutlined, GlobalOutlined } from '@ant-design/icons';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../../node_modules/react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { companies } from '../data/lines';
