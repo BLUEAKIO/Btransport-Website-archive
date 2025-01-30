@@ -1,7 +1,7 @@
 {
   "home": {
     "title": "首页",
-    "welcome": "欢迎访问地铁网站"
+    "welcome": "欢迎来到 BTransport"
   },
   "lines": {
     "title": "线路",
@@ -14,7 +14,7 @@
   "contact": {
     "title": "联系我们",
     "email": "邮箱: support@metro.com",
-    "phone": "电话: +123 456 7890"
+    "phone": "0"
   },
   "company": {
     "introduction": "公司简介",

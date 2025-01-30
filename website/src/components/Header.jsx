@@ -98,22 +98,22 @@ const NavHeader = () => {
         <Menu.Item key="1" icon={<HomeOutlined />}>
           {t('home.title')}
         </Menu.Item>
-        <Menu.Item key="2" icon={<LineChartOutlined />}>
+        {/*<Menu.Item key="2" icon={<LineChartOutlined />}>
           {t('lines.title')}
-        </Menu.Item>
+        </Menu.Item>*/}
         <Menu.Item key="3" icon={<LineChartOutlined />}>
           {t('company.operationalStatus')}
         </Menu.Item>
-        <Menu.Item key="4" icon={<ContactsOutlined />}>
+        {/*<Menu.Item key="4" icon={<ContactsOutlined />}>
           {t('contact.title')}
-        </Menu.Item>
+        </Menu.Item>*/}
       </Menu>
 
-      <Dropdown menu={companyMenu} trigger={['click']} placement="bottomRight">
+      {/*<Dropdown menu={companyMenu} trigger={['click']} placement="bottomRight">
         <span style={{ cursor: 'pointer', color: 'white', marginLeft: '20px' }}>
           <LineChartOutlined /> {t('header.selectLine')}
         </span>
-      </Dropdown>
+      </Dropdown>*/}
 
       <Dropdown menu={languageMenu} trigger={['click']} placement="bottomRight">
         <span style={{ cursor: 'pointer', color: 'white', marginLeft: '20px' }}>

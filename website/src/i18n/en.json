@@ -1,7 +1,7 @@
 {
   "home": {
     "title": "Home",
-    "welcome": "Welcome to the Metro Website"
+    "welcome": "Welcome to BTransport"
   },
   "lines": {
     "title": "Lines",
@@ -14,7 +14,7 @@
   "contact": {
     "title": "Contact Us",
     "email": "Email: transport@blueaskio.com",
-    "phone": "Phone: +123 456 7890"
+    "phone": ""
   },
   "company": {
     "introduction": "Company Introduction",
