@@ -4,7 +4,7 @@ import { HomeOutlined, LineChartOutlined, ClockCircleOutlined, ContactsOutlined,
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
-import { companies } from '../data/lines'; // 导入公司数据
+import { companies } from '../data/lines';
 
 const { Header } = Layout;
 
@@ -20,7 +20,7 @@ const NavHeader = () => {
         return ['1'];
       case '/lines':
         return ['2'];
-      case '/timetables':
+      case '/train_info':
         return ['3'];
       case '/contact':
         return ['4'];
@@ -39,7 +39,7 @@ const NavHeader = () => {
         navigate('/lines');
         break;
       case '3':
-        navigate('/timetables');
+        navigate('/train_info');
         break;
       case '4':
         navigate('/contact');
@@ -55,30 +55,33 @@ const NavHeader = () => {
   };
 
   // 语言切换下拉菜单
-  const languageMenu = (
-    <Menu onClick={handleLanguageChange}>
-      <Menu.Item key="en">English</Menu.Item>
-      <Menu.Item key="zh">中文</Menu.Item>
-    </Menu>
-  );
+  const languageMenu = {
+    items: [
+      { key: 'en', label: 'English' },
+      { key: 'zh', label: '中文' },
+    ],
+    onClick: handleLanguageChange,
+  };
 
   // 公司和线路选择下拉菜单
-  const companyMenu = (
-    <Menu>
-      {companies.map((company) => (
-        <Menu.SubMenu key={company.id} title={company.name}>
-          {company.lines.map((line) => (
-            <Menu.Item
-              key={`${company.id}-${line.id}`}
-              onClick={() => navigate(`/lines/${company.id}/${line.id}`)} // 跳转到线路详情页面
-            >
-              {line.name}
-            </Menu.Item>
-          ))}
-        </Menu.SubMenu>
-      ))}
-    </Menu>
-  );
+  const companyMenu = {
+    items: companies.map((company) => ({
+      key: company.id,
+      label: company.name,
+      children: [
+        {
+          key: `company-${company.id}`,
+          label: t('company.introduction'),
+          onClick: () => navigate(`/companies/${company.id}`),
+        },
+        ...company.lines.map((line) => ({
+          key: `${company.id}-${line.id}`,
+          label: line.name,
+          onClick: () => navigate(`/lines/${company.id}/${line.id}`),
+        })),
+      ],
+    })),
+  };
 
   return (
     <Header style={{ padding: '0 20px', display: 'flex', alignItems: 'center' }}>
@@ -88,7 +91,7 @@ const NavHeader = () => {
         onClick={() => navigate('/')} // 点击 LOGO 跳转到首页
       >
         <img src={logo} alt="Site Logo" style={{ height: '32px', marginRight: '10px' }} />
-        <span style={{ color: 'white', fontSize: '18px', fontWeight: 'bold' }}>Metro Company</span>
+        <span style={{ color: 'white', fontSize: '18px', fontWeight: 'bold' }}>BTransport</span>
       </div>
 
       {/* 导航菜单 */}
@@ -105,8 +108,8 @@ const NavHeader = () => {
         <Menu.Item key="2" icon={<LineChartOutlined />}>
           {t('lines.title')}
         </Menu.Item>
-        <Menu.Item key="3" icon={<ClockCircleOutlined />}>
-          {t('timetables.title')}
+        <Menu.Item key="3" icon={<LineChartOutlined />}>
+          {t('company.operationalStatus')}
         </Menu.Item>
         <Menu.Item key="4" icon={<ContactsOutlined />}>
           {t('contact.title')}
@@ -114,16 +117,16 @@ const NavHeader = () => {
       </Menu>
 
       {/* 公司和线路选择按钮 */}
-      <Dropdown overlay={companyMenu} trigger={['click']} placement="bottomRight">
+      <Dropdown menu={companyMenu} trigger={['click']} placement="bottomRight">
         <span style={{ cursor: 'pointer', color: 'white', marginLeft: '20px' }}>
-          <LineChartOutlined /> Select Line
+          <LineChartOutlined /> {t('header.selectLine')}
         </span>
       </Dropdown>
 
       {/* 语言切换按钮 */}
-      <Dropdown overlay={languageMenu} trigger={['click']} placement="bottomRight">
+      <Dropdown menu={languageMenu} trigger={['click']} placement="bottomRight">
         <span style={{ cursor: 'pointer', color: 'white', marginLeft: '20px' }}>
-          <GlobalOutlined /> {i18n.language === 'en' ? 'English' : '中文'}
+          <GlobalOutlined /> {t('header.language')}
         </span>
       </Dropdown>
     </Header>

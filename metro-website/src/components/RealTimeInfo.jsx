@@ -1,10 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, Alert } from 'antd';
 
 const RealTimeInfo = () => {
+  const { t } = useTranslation();
+
   return (
-    <Card title="Real-Time Information" style={{ margin: '20px' }}>
-      <Alert message="No delays reported." type="success" showIcon />
+    <Card title={t('realTimeInfo.title')} style={{ margin: '20px' }}>
+      <Alert message={t('realTimeInfo.noDelays')} type="success" showIcon />
     </Card>
   );
 };

@@ -13,7 +13,53 @@
   },
   "contact": {
     "title": "Contact Us",
-    "email": "Email: support@metro.com",
+    "email": "Email: transport@blueaskio.com",
     "phone": "Phone: +123 456 7890"
+  },
+  "company": {
+    "introduction": "Company Introduction",
+    "description": "No description available.",
+    "lineMap": "Interactive Line Map",
+    "operationalStatus": "Operational Status",
+    "operationalInformation": "Operational Information",
+    "noDelays": "No delays reported."
+  },
+  "line": {
+    "map": "Line Map",
+    "operationalStatus": "Operational Status"
+  },
+  "header": {
+    "selectLine": "Select Line",
+    "language": "Language"
+  },
+  "footer": {
+    "copyright": "© 2024 BLUEAKIO & BTransport"
+  },
+  "notFound": {
+    "company": "Company not found",
+    "line": "Line not found"
+  },
+  "lineMap": {
+    "title": "Line Map",
+    "description": "Interactive line map will be displayed here."
+  },
+  "realTimeInfo": {
+    "title": "Real-Time Information",
+    "noDelays": "No delays reported."
+  },
+  "timetable": {
+    "title": "Timetable",
+    "line": "Line",
+    "departure": "Departure Time",
+    "arrival": "Arrival Time",
+    "line1": "Line 1",
+    "line2": "Line 2"
+  },
+  "status": {
+    "normal": "Normal Operation",
+    "delay": "Delay",
+    "partialSuspension": "Partial Suspension",
+    "termination": "Termination",
+    "suspended": "Suspended"
   }
 }

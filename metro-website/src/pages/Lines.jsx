@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Row, Col, Card, List } from 'antd';
 import { companies } from '../data/lines';
+
 const Lines = () => {
   const { t } = useTranslation();
 

@@ -1,10 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card } from 'antd';
 
 const LineMap = () => {
+  const { t } = useTranslation();
+
   return (
-    <Card title="Line Map" style={{ margin: '20px' }}>
-      <p>Interactive line map will be displayed here.</p>
+    <Card title={t('lineMap.title')} style={{ margin: '20px' }}>
+      <p>{t('lineMap.description')}</p>
     </Card>
   );
 };

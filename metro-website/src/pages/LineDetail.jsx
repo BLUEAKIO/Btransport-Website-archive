@@ -1,20 +1,55 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Row, Col, Card, Typography } from 'antd';
-import { companies } from '../data/lines'; // 导入公司数据
+import { useTranslation } from 'react-i18next';
+import { Row, Col, Card, Typography, Table } from 'antd';
+import { companies } from '../data/lines';
 
 const { Title, Paragraph } = Typography;
 
 const LineDetail = () => {
-  const { companyId, lineId } = useParams(); // 获取路由参数
+  const { companyId, lineId } = useParams();
+  const { t } = useTranslation();
 
-  // 查找对应的公司和线路
   const company = companies.find((c) => c.id === companyId);
   const line = company?.lines.find((l) => l.id === lineId);
 
   if (!company || !line) {
-    return <div>Line not found</div>;
+    return <div>{t('notFound.line')}</div>;
   }
+
+  // 时刻表数据
+  const timetableColumns = [
+    {
+      title: t('timetable.line'),
+      dataIndex: 'line',
+      key: 'line',
+    },
+    {
+      title: t('timetable.departure'),
+      dataIndex: 'departure',
+      key: 'departure',
+    },
+    {
+      title: t('timetable.arrival'),
+      dataIndex: 'arrival',
+      key: 'arrival',
+    },
+  ];
+
+  const timetableData = [
+    {
+      key: '1',
+      line: t('timetable.line1'),
+      departure: '08:00',
+      arrival: '08:30',
+    },
+    {
+      key: '2',
+      line: t('timetable.line2'),
+      departure: '08:15',
+      arrival: '08:45',
+    },
+  ];
 
   return (
     <Row justify="center" style={{ marginTop: '20px' }}>
@@ -22,13 +57,14 @@ const LineDetail = () => {
         <Title level={2}>
           {company.name} - {line.name}
         </Title>
-        <Card title="Line Map" style={{ marginBottom: '20px' }}>
-          <Paragraph>Interactive line map will be displayed here.</Paragraph>
-          {/* 这里可以嵌入线路运行图 */}
+        <Card title={t('line.map')} style={{ marginBottom: '20px' }}>
+          <Paragraph>{t('line.map')} for {line.name} {t('company.noDelays')}</Paragraph>
         </Card>
-        <Card title="Operational Status">
-          <Paragraph>No delays reported.</Paragraph>
-          {/* 这里可以显示线路运营状态 */}
+        <Card title={t('line.operationalStatus')} style={{ marginBottom: '20px' }}>
+          <Paragraph>{t('company.noDelays')}</Paragraph>
+        </Card>
+        <Card title={t('timetable.title')}>
+          <Table columns={timetableColumns} dataSource={timetableData} pagination={false} />
         </Card>
       </Col>
     </Row>

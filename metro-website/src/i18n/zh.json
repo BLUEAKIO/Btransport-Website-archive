@@ -15,5 +15,51 @@
     "title": "联系我们",
     "email": "邮箱: support@metro.com",
     "phone": "电话: +123 456 7890"
+  },
+  "company": {
+    "introduction": "公司简介",
+    "description": "暂无简介。",
+    "lineMap": "交互式线路图",
+    "operationalStatus": "运营状态",
+    "operationalInformation": "运营信息",
+    "noDelays": "无延误报告。"
+  },
+  "line": {
+    "map": "线路图",
+    "operationalStatus": "运营状态"
+  },
+  "header": {
+    "selectLine": "选择线路",
+    "language": "语言"
+  },
+  "footer": {
+    "copyright": "© 2024 BLUEAKIO & BTransport"
+  },
+  "notFound": {
+    "company": "公司未找到",
+    "line": "线路未找到"
+  },
+  "lineMap": {
+    "title": "线路图",
+    "description": "交互式线路图将显示在这里。"
+  },
+  "realTimeInfo": {
+    "title": "实时信息",
+    "noDelays": "无延误报告。"
+  },
+  "timetable": {
+    "title": "时刻表",
+    "line": "线路",
+    "departure": "出发时间",
+    "arrival": "到达时间",
+    "line1": "线路 1",
+    "line2": "线路 2"
+  },
+  "status": {
+    "normal": "正常运行",
+    "delay": "延误",
+    "partialSuspension": "部分停运",
+    "termination": "直通运转终止",
+    "suspended": "停止运行"
   }
 }

@@ -2,11 +2,9 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -18,6 +16,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -42,12 +41,16 @@ body {
 .ant-layout-content {
   flex: 1;
   padding: 20px;
+  width: 100%; /* 宽度占满父容器 */
+  max-width: 100%; /* 最大宽度为100% */
+  margin: 0 auto; /* 居中显示 */
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -59,9 +62,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -72,10 +77,48 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
+  }
+}
+
+/* 针对手机端的样式调整 */
+@media (max-width: 767px) {
+  .ant-layout-content {
+    padding: 10px; /* 手机端减少内边距 */
+  }
+
+  h1 {
+    font-size: 2em; /* 手机端标题字体缩小 */
+  }
+
+  .ant-table {
+    width: 100%; /* 表格宽度占满父容器 */
+    overflow-x: auto; /* 允许表格水平滚动 */
+  }
+
+  .ant-card {
+    width: 100%; /* 卡片宽度占满父容器 */
+  }
+}
+
+/* 针对PC端或横屏界面的样式调整 */
+@media (min-width: 768px) {
+  .ant-layout-content {
+    padding: 40px; /* PC端增加内边距 */
+    max-width: 1200px; /* 最大宽度为1200px，避免内容过宽 */
+  }
+
+  .ant-table {
+    width: 100%; /* 表格宽度占满父容器 */
+  }
+
+  .ant-card {
+    width: 100%; /* 卡片宽度占满父容器 */
   }
 }
