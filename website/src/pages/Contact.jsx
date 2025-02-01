@@ -10,7 +10,6 @@ const Contact = () => {
       <Col xs={24} sm={20} md={16} lg={12} xl={10}>
         <Card title={t('contact.title')} style={{ margin: '20px' }}>
           <p>{t('contact.email')}</p>
-          <p>{t('contact.phone')}</p>
         </Card>
       </Col>
     </Row>
