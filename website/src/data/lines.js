@@ -1,13 +1,25 @@
 export const companies = [
   {
+    id: 'TradeWind-Subway',
+    name: {
+      en: 'TradeWind Subway',
+      zh: '信风地铁',
+    },
+    description: {
+      en: 'TradeWind Subway is a leading provider of metro services in the region.',
+      zh: '信风地铁是该地区领先的地铁服务提供商。',
+    },
+    lines: [],
+  },
+  {
     id: 'Hoshino-Railway',
     name: {
       en: 'Hoshino Railway',
-      zh: '星野电铁',
+      zh: '星野铁道',
     },
     description: {
       en: 'Hoshino Railway is a leading provider of metro services in the region.',
-      zh: '星野电铁是该地区领先的地铁服务提供商。',
+      zh: '星野铁道是该地区领先的地铁服务提供商。',
     },
     lines: [
       {
@@ -30,7 +42,7 @@ export const companies = [
         },
         operationalStatus: 'normal',
         operationalInfo: {
-          en: 'GOperating normally',
+          en: 'Operating normally',
           zh: '正常运营',
         },
       },
@@ -40,7 +52,7 @@ export const companies = [
           en: 'Kuchinashi Line',
           zh: '栀子线',
         },
-        operationalStatus: 'partialSuspension',
+        operationalStatus: 'suspended',
         operationalInfo: {
           en: 'Kuchinashi Line under construction in its entirety',
           zh: '栀子线全线修建中',

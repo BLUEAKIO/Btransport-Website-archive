@@ -13,8 +13,8 @@
   },
   "contact": {
     "title": "Contact Us",
-    "email": "Email: transport@blueaskio.com",
-    "phone": ""
+
+    "email": "Email: transport@blueakio.com"
   },
   "company": {
     "introduction": "Company Introduction",
@@ -33,7 +33,7 @@
     "language": "Language"
   },
   "footer": {
-    "copyright": "© 2024 BLUEAKIO & BTransport"
+    "copyright": "© 2024 BLUEAKIO & BTransport. This page is in BETA state, reliability is not guaranteed. Current version: BETA 0.1.1"
   },
   "notFound": {
     "company": "Company not found",
@@ -45,7 +45,8 @@
   },
   "realTimeInfo": {
     "title": "Real-Time Information",
-    "noDelays": "No delays reported."
+    "noDelays": "No delays reported.",
+    "allNormal": "All lines are operating normally"
   },
   "timetable": {
     "title": "Timetable",

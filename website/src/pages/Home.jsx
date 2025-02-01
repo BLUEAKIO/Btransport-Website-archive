@@ -1,18 +1,19 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { Row, Col } from 'antd';
 import RealTimeInfo from '../components/RealTimeInfo';
+import CarouselBanner from '../components/CarouselBanner';
+import CompanyLogos from '../components/CompanyLogos';
 
 const Home = () => {
-  const { t } = useTranslation();
-
   return (
-    <Row justify="center" style={{ marginTop: '20px' }}>
-      <Col xs={24} sm={20} md={16} lg={12} xl={10}>
-        <h1>{t('home.title')}</h1>
-        <p>{t('home.welcome')}</p>
-        {/*<RealTimeInfo />*/}
+    <Row gutter={[0, 20]}>
+      <Col span={24}>
+        <CarouselBanner />
       </Col>
+      <Col span={24} style={{ display: 'flex', justifyContent: 'center' }}>
+        <RealTimeInfo />
+      </Col>
+      {/*<CompanyLogos />*/}
     </Row>
   );
 };
