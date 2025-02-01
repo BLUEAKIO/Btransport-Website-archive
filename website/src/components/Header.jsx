@@ -104,9 +104,9 @@ const NavHeader = () => {
         <Menu.Item key="3" icon={<LineChartOutlined />}>
           {t('company.operationalStatus')}
         </Menu.Item>
-        <Menu.Item key="4" icon={<ContactsOutlined />}>
+        {/*<Menu.Item key="4" icon={<ContactsOutlined />}>
           {t('contact.title')}
-        </Menu.Item>
+        </Menu.Item>*/}
       </Menu>
 
       {/*<Dropdown menu={companyMenu} trigger={['click']} placement="bottomRight">
