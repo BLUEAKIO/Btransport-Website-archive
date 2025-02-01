@@ -106,7 +106,7 @@ const NavHeader = () => {
         </Menu.Item>
         <Menu.Item key="4" icon={<ContactsOutlined />}>
           {t('contact.title')}
-        </Menu.Item>
+        </Menu.Item> 
       </Menu>
 
       {/*<Dropdown menu={companyMenu} trigger={['click']} placement="bottomRight">
