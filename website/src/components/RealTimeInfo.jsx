@@ -22,6 +22,9 @@ const RealTimeInfo = () => {
       setCurrentLanguage(lng);
     };
 
+    // 设置初始语言
+    setCurrentLanguage(i18n.language);
+
     i18n.on('languageChanged', handleLanguageChanged);
 
     return () => {
