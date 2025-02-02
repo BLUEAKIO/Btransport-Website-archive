@@ -32,6 +32,10 @@ i18n
       lookupCookie: 'i18next',
       lookupLocalStorage: 'i18nextLng',
       checkWhitelist: true,
+      cookieMinutes: 10,
+      cookieDomain: 'myDomain',
+      htmlTag: document.documentElement,
+      cookieOptions: { path: '/', sameSite: 'strict' }
     },
     whitelist: ['en', 'zh-Hans', 'zh-Hant'],
     load: 'languageOnly',
@@ -46,5 +50,17 @@ i18n
       return key;
     },
   });
+
+i18n.on('languageChanged', (lng) => {
+  const options = i18n.options.detection;
+  if (options.caches) {
+    if (options.caches.includes('cookie')) {
+      document.cookie = `i18next=${lng};path=/;domain=${options.cookieDomain};max-age=${options.cookieMinutes * 60}`;
+    }
+    if (options.caches.includes('localStorage')) {
+      localStorage.setItem('i18nextLng', lng);
+    }
+  }
+});
 
 export default i18n;
