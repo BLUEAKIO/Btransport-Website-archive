@@ -42,9 +42,10 @@ const NavHeader = () => {
 
   const languageMenu = {
     items: [
-      { key: 'zh-Hans', label: '简体中文' },
-      { key: 'zh-Hant', label: '繁體中文' },
+      { key: 'zh-CN', label: '简体中文 (中国大陆)' },
+      { key: 'zh-HK', label: '繁體中文 (中國香港)' },
       { key: 'en', label: 'English' },
+      //{ key: 'ja', label: '日本語' },
     ],
     onClick: handleLanguageChange,
   };

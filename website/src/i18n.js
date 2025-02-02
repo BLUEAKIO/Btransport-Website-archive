@@ -2,25 +2,25 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import enTranslation from './i18n/en.json';
-import zhHansTranslation from './i18n/zh-Hans.json';
-import zhHantTranslation from './i18n/zh-Hant.json';
+import zhCNTranslation from './i18n/zh-CN.json';
+import zhHKTranslation from './i18n/zh-HK.json';
 
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
+      'zh-CN': {
+        translation: zhCNTranslation,
+      },
+      'zh-HK': {
+        translation: zhHKTranslation,
+      },
       en: {
         translation: enTranslation,
       },
-      'zh-Hans': {
-        translation: zhHansTranslation,
-      },
-      'zh-Hant': {
-        translation: zhHantTranslation,
-      },
     },
-    fallbackLng: 'zh-Hans',
+    fallbackLng: 'zh-CN',
     debug: true,
     interpolation: {
       escapeValue: false,
