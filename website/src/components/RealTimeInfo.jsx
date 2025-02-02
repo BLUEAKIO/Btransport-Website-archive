@@ -23,14 +23,16 @@ const RealTimeInfo = () => {
     };
 
     // 设置初始语言
-    setCurrentLanguage(i18n.language);
+    if (i18n.language !== currentLanguage) {
+      setCurrentLanguage(i18n.language);
+    }
 
     i18n.on('languageChanged', handleLanguageChanged);
 
     return () => {
       i18n.off('languageChanged', handleLanguageChanged);
     };
-  }, [i18n]);
+  }, [i18n, currentLanguage]);
 
   const data = companies.flatMap((company) =>
     company.lines
