@@ -28,6 +28,22 @@ i18n
     detection: {
       order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag'],
       caches: ['cookie', 'localStorage'],
+      lookupQuerystring: 'lng',
+      lookupCookie: 'i18next',
+      lookupLocalStorage: 'i18nextLng',
+      checkWhitelist: true,
+    },
+    whitelist: ['en', 'zh-Hans', 'zh-Hant'],
+    load: 'languageOnly',
+    parseMissingKeyHandler: (key) => {
+      if (key.startsWith('zh')) {
+        if (key === 'zh-CN' || key === 'zh-SG') {
+          return 'zh-Hans';
+        } else if (key === 'zh-HK' || key === 'zh-TW' || key === 'zh-MO') {
+          return 'zh-Hant';
+        }
+      }
+      return key;
     },
   });
 
