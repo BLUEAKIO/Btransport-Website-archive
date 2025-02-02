@@ -2,60 +2,60 @@ export const companies = [
   {
     id: 'TradeWind-Subway',
     name: {
-      en: 'TradeWind Subway',
-      zh: '信风地铁',
-    },
-    description: {
-      en: 'TradeWind Subway is a leading provider of metro services in the region.',
-      zh: '信风地铁是该地区领先的地铁服务提供商。',
+      'zh-Hans': '信风地铁',
+      'zh-Hant': '信風地鐵',
+      'en': 'TradeWind Subway',
     },
     lines: [],
   },
   {
     id: 'Hoshino-Railway',
     name: {
-      en: 'Hoshino Railway',
-      zh: '星野铁道',
-    },
-    description: {
-      en: 'Hoshino Railway is a leading provider of metro services in the region.',
-      zh: '星野铁道是该地区领先的地铁服务提供商。',
+      'zh-Hans': '星野铁道',
+      'zh-Hant': '星野鐵道',
+      'en': 'Hoshino Railway',
     },
     lines: [
       {
         id: 'HH',
         name: {
-          en: 'Hoshino Main Line',
-          zh: '星野本线',
+          'zh-Hans': '星野本线',
+          'zh-Hant': '星野铁道',
+          'en': 'Hoshino Main Line',
         },
         operationalStatus: 'partialSuspension',
         operationalInfo: {
-          en: 'Due to construction, service between Abydos and Neptuno is suspended',
-          zh: '因施工影响，阿拜多斯站至涅普缇努站区间暂停服务',
+          'zh-Hans': '因施工影响，阿拜多斯站至涅普缇努站区间暂停服务',
+          'zh-Hant': '因施工影響，阿拜多斯站至涅普緹努站區間暫停服務',
+          'en': 'Due to construction, service between Abydos and Neptuno is suspended',
         },
       },
       {
         id: 'HS',
         name: {
-          en: 'Shiroko Line',
-          zh: '白子线',
+          'zh-Hans': '白子线',
+          'zh-Hant': '白子綫',
+          'en': 'Shiroko Line',
         },
         operationalStatus: 'normal',
         operationalInfo: {
-          en: 'Operating normally',
-          zh: '正常运营',
+          'zh-Hans': '正常运营',
+          'zh-Hant': '正常運營',
+          'en': 'Operating normally',
         },
       },
       {
         id: 'HK',
         name: {
-          en: 'Kuchinashi Line',
-          zh: '栀子线',
+          'zh-Hans': '栀子线',
+          'zh-Hant': '梔子線',
+          'en': 'Kuchinashi Line',
         },
         operationalStatus: 'suspended',
         operationalInfo: {
-          en: 'Kuchinashi Line under construction in its entirety',
-          zh: '栀子线全线修建中',
+          'zh-Hans': '栀子线全线修建中',
+          'zh-Hant': '梔子線全線興建中',
+          'en': 'Kuchinashi Line under construction in its entirety',
         },
       },
     ],

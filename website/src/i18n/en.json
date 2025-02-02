@@ -11,10 +11,6 @@
     "title": "Timetables",
     "schedule": "Train Schedule"
   },
-  "contact": {
-    "title": "Contact Us",
-    "email": "Email: transport@blueakio.com"
-  },
   "company": {
     "introduction": "Company Introduction",
     "description": "No description available.",
@@ -28,7 +24,6 @@
     "operationalStatus": "Operational Status"
   },
   "header": {
-    "selectLine": "Select Line",
     "language": "Language"
   },
   "footer": {

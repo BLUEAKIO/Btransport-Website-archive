@@ -14,14 +14,14 @@ const CarouselBanner = () => {
       <Carousel autoplay autoplaySpeed={10000}>
         <div>
           <img 
-            src="/banner/Blank.png" 
+            src="/assetc/banner/Blank.png" 
             alt="Banner 1" 
             style={{ width: '100%', height: 'auto' }}
           />
         </div>
         <div>
           <img 
-            src="/banner/Blank.png" 
+            src="/assetc/banner/Blank.png" 
             alt="Banner 2" 
             style={{ width: '100%', height: 'auto' }}
           />

@@ -24,7 +24,7 @@ const CompanyLogos = () => {
               onClick={() => navigate(`/companies/${company.id}`)}
             >
               <img
-                src={`/companies/company_${company.id}.png`}
+                src={`/assetc/companies/${company.id}.png`}
                 alt={company.name.en}
                 style={{ height: '60px', marginBottom: '8px' }}
               />

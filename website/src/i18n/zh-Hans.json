@@ -11,10 +11,6 @@
     "title": "时刻表",
     "schedule": "列车时刻表"
   },
-  "contact": {
-    "title": "联系我们",
-    "email": "邮箱：transport@blueakio.com"
-  },
   "company": {
     "introduction": "公司简介",
     "description": "暂无简介。",
@@ -28,7 +24,6 @@
     "operationalStatus": "运营状态"
   },
   "header": {
-    "selectLine": "选择线路",
     "language": "语言"
   },
   "footer": {

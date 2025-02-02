@@ -1,0 +1,60 @@
+{
+  "home": {
+    "title": "首頁",
+    "welcome": "歡迎來到 BTransport"
+  },
+  "lines": {
+    "title": "線路",
+    "map": "互動式線路圖"
+  },
+  "timetables": {
+    "title": "時刻表",
+    "schedule": "列車時刻表"
+  },
+  "company": {
+    "introduction": "公司簡介",
+    "description": "暫無簡介。",
+    "lineMap": "互動式線路圖",
+    "operationalStatus": "營運狀態",
+    "operationalInformation": "營運資訊",
+    "noDelays": "無延誤報告。"
+  },
+  "line": {
+    "map": "線路圖",
+    "operationalStatus": "營運狀態"
+  },
+  "header": {
+    "language": "語言"
+  },
+  "footer": {
+    "copyright": "© 2024 BLUEAKIO & BTransport. 頁面處於 BETA 狀態，不保證可靠性。目前版本：BETA 0.1.1"
+  },
+  "notFound": {
+    "company": "公司未找到",
+    "line": "線路未找到"
+  },
+  "lineMap": {
+    "title": "線路圖",
+    "description": "互動式線路圖將顯示在這裡。"
+  },
+  "realTimeInfo": {
+    "title": "即時訊息",
+    "noDelays": "無延誤報告。",
+    "allNormal": "所有線路正常運作"
+  },
+  "timetable": {
+    "title": "時刻表",
+    "line": "線路",
+    "departure": "出發時間",
+    "arrival": "到達時間",
+    "line1": "線路 1",
+    "line2": "線路 2"
+  },
+  "status": {
+    "normal": "正常運作",
+    "delay": "延誤",
+    "partialSuspension": "部分停駛",
+    "termination": "直通運轉終止",
+    "suspended": "停止運作"
+  }
+}
