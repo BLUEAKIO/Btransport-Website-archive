@@ -50,18 +50,10 @@ const OperationalStatus = () => {
   ];
 
   return (
-    <Row justify="center" style={{ marginTop: '20px' }}>
-      <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-        <h1>{t('company.operationalStatus')}</h1>
-        <Card>
-          <Table
-            columns={columns}
-            dataSource={data}
-            pagination={false}
-            bordered
-            scroll={{ x: true }}
-            style={{ width: '100%' }}
-          />
+    <Row gutter={16}>
+      <Col span={24}>
+        <Card title={t('operationalStatus.title')}>
+          <Table dataSource={data} columns={columns} />
         </Card>
       </Col>
     </Row>
