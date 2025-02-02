@@ -4,7 +4,6 @@ import { HomeOutlined, LineChartOutlined, ClockCircleOutlined, ContactsOutlined,
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
-import { companies } from '../data/lines';
 
 const { Header } = Layout;
 
@@ -17,12 +16,8 @@ const NavHeader = () => {
     switch (location.pathname) {
       case '/':
         return ['1'];
-      case '/lines':
-        return ['2'];
       case '/train_info':
-        return ['3'];
-      case '/contact':
-        return ['4'];
+        return ['2'];
       default:
         return ['1'];
     }
@@ -34,13 +29,7 @@ const NavHeader = () => {
         navigate('/');
         break;
       case '2':
-        navigate('/lines');
-        break;
-      case '3':
         navigate('/train_info');
-        break;
-      case '4':
-        navigate('/contact');
         break;
       default:
         break;
@@ -53,29 +42,11 @@ const NavHeader = () => {
 
   const languageMenu = {
     items: [
+      { key: 'zh-Hans', label: '简体中文' },
+      { key: 'zh-Hant', label: '繁體中文' },
       { key: 'en', label: 'English' },
-      { key: 'zh', label: '中文' },
     ],
     onClick: handleLanguageChange,
-  };
-
-  const companyMenu = {
-    items: companies.map((company) => ({
-      key: company.id,
-      label: company.name,
-      children: [
-        {
-          key: `company-${company.id}`,
-          label: t('company.introduction'),
-          onClick: () => navigate(`/companies/${company.id}`),
-        },
-        ...company.lines.map((line) => ({
-          key: `${company.id}-${line.id}`,
-          label: line.name,
-          onClick: () => navigate(`/lines/${company.id}/${line.id}`),
-        })),
-      ],
-    })),
   };
 
   return (
@@ -98,22 +69,10 @@ const NavHeader = () => {
         <Menu.Item key="1" icon={<HomeOutlined />}>
           {t('home.title')}
         </Menu.Item>
-        {/*<Menu.Item key="2" icon={<LineChartOutlined />}>
-          {t('lines.title')}
-        </Menu.Item>*/}
-        <Menu.Item key="3" icon={<LineChartOutlined />}>
+        <Menu.Item key="2" icon={<LineChartOutlined />}>
           {t('company.operationalStatus')}
         </Menu.Item>
-        <Menu.Item key="4" icon={<ContactsOutlined />}>
-          {t('contact.title')}
-        </Menu.Item> 
       </Menu>
-
-      {/*<Dropdown menu={companyMenu} trigger={['click']} placement="bottomRight">
-        <span style={{ cursor: 'pointer', color: 'white', marginLeft: '20px' }}>
-          <LineChartOutlined /> {t('header.selectLine')}
-        </span>
-      </Dropdown>*/}
 
       <Dropdown menu={languageMenu} trigger={['click']} placement="bottomRight">
         <span style={{ cursor: 'pointer', color: 'white', marginLeft: '20px' }}>

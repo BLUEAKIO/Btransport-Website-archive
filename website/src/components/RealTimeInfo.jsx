@@ -14,16 +14,16 @@ const statusColors = {
 
 const RealTimeInfo = () => {
   const { t, i18n } = useTranslation();
-  const currentLanguage = ['en', 'zh'].includes(i18n.language) ? i18n.language : 'zh';
+  const currentLanguage = ['en', 'zh-Hans', 'zh-Hant'].includes(i18n.language) ? i18n.language : 'en';
 
   const data = companies.flatMap((company) =>
     company.lines
       .filter((line) => line.operationalStatus !== 'normal')
       .map((line) => ({
         key: `${company.id}-${line.id}`,
-        name: `${company.name[currentLanguage]} ${line.name[currentLanguage]}`,
+        name: `${company.name[currentLanguage] || company.name['en']} ${line.name[currentLanguage] || line.name['en']}`,
         status: line.operationalStatus,
-        info: line.operationalInfo[currentLanguage],
+        info: line.operationalInfo[currentLanguage] || line.operationalInfo['en'],
       }))
   );
 
