@@ -4,7 +4,7 @@ import { Layout, Menu, Dropdown, Drawer, Select } from 'antd';
 import { HomeOutlined, LineChartOutlined, GlobalOutlined, MenuOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.svg';
 
 const { Header } = Layout;
 
@@ -175,29 +175,6 @@ const StyledLanguageSelect = styled(Select)`
   }
 `;
 
-const DesktopLanguageSelect = styled(StyledLanguageSelect)`
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const MobileLanguageButton = styled(GlobalOutlined)`
-  display: none;
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.65);
-  cursor: pointer;
-  padding: 8px;
-  transition: color 0.3s;
-
-  &:hover {
-    color: #ffffff;
-  }
-
-  @media screen and (max-width: 768px) {
-    display: block;
-  }
-`;
-
 const LanguageIcon = styled(GlobalOutlined)`
   color: rgba(255, 255, 255, 0.65);
   cursor: pointer;
@@ -277,7 +254,6 @@ const NavHeader = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
 
   const getSelectedKeys = () => {
     switch (location.pathname) {
