@@ -1,7 +1,8 @@
 {
   "home": {
     "title": "首頁",
-    "welcome": "歡迎來到 BTransport"
+    "welcome": "歡迎來到 BTransport",
+    "company": "加入的公司列表"
   },
   "lines": {
     "title": "線路",
@@ -28,7 +29,8 @@
     "language": "語言"
   },
   "footer": {
-    "copyright": "© 2024 BLUEAKIO & BTransport. 頁面處於 BETA 狀態，不保證可靠性。目前版本：BETA 0.1.3"
+    "copyright": "© 2024 BLUEAKIO & BTransport.",
+    "beta": "頁面處於 BETA 狀態，不保證可靠性。目前版本：BETA 0.1.3"
   },
   "notFound": {
     "company": "公司未找到",

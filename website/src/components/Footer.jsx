@@ -10,6 +10,8 @@ const AppFooter = () => {
   return (
     <Footer style={{ textAlign: 'center', padding: '20px' }}>
       {t('footer.copyright')}
+      <br />
+      {t('footer.beta')}
     </Footer>
   );
 };

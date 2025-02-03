@@ -13,7 +13,7 @@ const Home = () => {
       <Col span={24} style={{ display: 'flex', justifyContent: 'center' }}>
         <RealTimeInfo />
       </Col>
-      {/*<CompanyLogos />*/}
+      <CompanyLogos />
     </Row>
   );
 };

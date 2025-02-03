@@ -1,7 +1,8 @@
 {
   "home": {
     "title": "Home",
-    "welcome": "Welcome to BTransport"
+    "welcome": "Welcome to BTransport",
+    "company": "List of companies joined"
   },
   "lines": {
     "title": "Lines",
@@ -28,7 +29,8 @@
     "language": "Language"
   },
   "footer": {
-    "copyright": "© 2024 BLUEAKIO & BTransport. This page is in BETA state, reliability is not guaranteed. Current version: BETA 0.1.3"
+    "copyright": "© 2024 BLUEAKIO & BTransport.",
+    "beta": "This page is in BETA state, reliability is not guaranteed. Current version: BETA 0.1.3"
   },
   "notFound": {
     "company": "Company not found",
