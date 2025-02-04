@@ -1,16 +1,259 @@
-import React from 'react';
-import { Layout, Menu, Dropdown } from 'antd';
-import { HomeOutlined, LineChartOutlined, ClockCircleOutlined, ContactsOutlined, GlobalOutlined } from '@ant-design/icons';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Layout, Menu, Dropdown, Drawer, Select } from 'antd';
+import { HomeOutlined, LineChartOutlined, GlobalOutlined, MenuOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.svg';
 
 const { Header } = Layout;
+
+const StyledHeader = styled(Header)`
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 10px;
+  }
+`;
+
+const LeftSection = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const RightSection = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const MenuAndLanguageSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 20px;
+  
+  img {
+    height: 32px;
+    transition: all 0.3s ease;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-right: 10px;
+    img {
+      height: 24px;
+    }
+  }
+`;
+
+const StyledMenu = styled(Menu)`
+  &.ant-menu {
+    background: #001529;
+    
+    .ant-menu-item {
+      color: rgba(255, 255, 255, 0.65);
+      
+      .ant-menu-item-icon {
+        color: rgba(255, 255, 255, 0.65);
+      }
+      
+      &:hover {
+        color: #ffffff !important;
+        
+        .ant-menu-item-icon {
+          color: #ffffff !important;
+        }
+      }
+      
+      &.ant-menu-item-selected {
+        color: #ffffff;
+        
+        .ant-menu-item-icon {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none !important;
+  }
+`;
+
+const MobileMenuButton = styled(MenuOutlined)`
+  display: none;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #ffffff;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const LanguageSelector = styled.span`
+  cursor: pointer;
+  color: white;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  @media screen and (max-width: 768px) {
+    margin-left: 10px;
+  }
+`;
+
+const StyledLanguageSelect = styled(Select)`
+  &.ant-select {
+    .ant-select-selector {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background-color: #001529 !important;
+      border: none !important;
+      
+      .ant-select-selection-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: rgba(255, 255, 255, 0.65) !important;
+      }
+    }
+    
+    .ant-select-arrow {
+      color: rgba(255, 255, 255, 0.65) !important;
+    }
+    
+    &:hover, &.ant-select-focused, &.ant-select-open {
+      .ant-select-selector {
+        .ant-select-selection-item {
+          color: #ffffff !important;
+        }
+      }
+      .ant-select-arrow {
+        color: #ffffff !important;
+      }
+    }
+
+    .ant-select-dropdown {
+      .ant-select-item {
+        color: rgba(0, 0, 0, 0.65);
+        
+        &:hover {
+          background-color: rgba(22, 119, 255, 0.1) !important;
+          color: #ffffff !important;
+        }
+        
+        &.ant-select-item-option-selected {
+          color: #ffffff !important;
+          background-color: rgba(22, 119, 255, 0.1) !important;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const LanguageIcon = styled(GlobalOutlined)`
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 8px;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #ffffff;
+  }
+`;
+
+const LanguageText = styled.span`
+  color: rgba(255, 255, 255, 0.65);
+  transition: color 0.3s;
+  
+  ${({ isHovered }) => isHovered && `
+    color: #ffffff;
+  `}
+`;
+
+const DesktopLanguageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  
+  &:hover {
+    ${LanguageText} {
+      color: #ffffff;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const MobileLanguageWrapper = styled.div`
+  display: none;
+  
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const LanguageButton = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.3s;
+
+  &:hover {
+    .language-icon {
+      color: #ffffff;
+    }
+    .language-text {
+      color: #ffffff;
+    }
+  }
+`;
+
+const StyledLanguageIcon = styled(GlobalOutlined)`
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 18px;
+  transition: color 0.3s;
+`;
+
+const StyledLanguageText = styled.span`
+  color: rgba(255, 255, 255, 0.65);
+  transition: color 0.3s;
+`;
 
 const NavHeader = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const getSelectedKeys = () => {
     switch (location.pathname) {
@@ -36,51 +279,97 @@ const NavHeader = () => {
     }
   };
 
+  // 语言切换处理函数
   const handleLanguageChange = (e) => {
     i18n.changeLanguage(e.key);
   };
 
+  const menuItems = [
+    {
+      key: '1',
+      icon: <HomeOutlined />,
+      label: t('home.title')
+    },
+    {
+      key: '2',
+      icon: <LineChartOutlined />,
+      label: t('company.operationalStatus')
+    }
+  ];
+
+  // 语言菜单配置
   const languageMenu = {
     items: [
       { key: 'zh-CN', label: '简体中文 (中国大陆)' },
       { key: 'zh-HK', label: '繁體中文 (中國香港)' },
-      { key: 'en', label: 'English' },
-      //{ key: 'ja', label: '日本語' },
+      { key: 'en', label: 'English' }
     ],
     onClick: handleLanguageChange,
   };
 
   return (
-    <Header style={{ padding: '0 20px', display: 'flex', alignItems: 'center' }}>
-      <div
-        style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginRight: '20px' }}
-        onClick={() => navigate('/')}
-      >
-        <img src={logo} alt="Site Logo" style={{ height: '32px', marginRight: '10px' }} />
-        <span style={{ color: 'white', fontSize: '18px', fontWeight: 'bold' }}>BTransport</span>
-      </div>
+    <StyledHeader>
+      <LeftSection>
+        <LogoWrapper onClick={() => navigate('/')}>
+          <img src={logo} alt="Site Logo" />
+        </LogoWrapper>
+        <StyledMenu
+          theme="dark"
+          mode="horizontal"
+          selectedKeys={getSelectedKeys()}
+          onClick={handleMenuClick}
+          items={menuItems}
+        />
+      </LeftSection>
+      
+      <RightSection>
+        <MenuAndLanguageSection>
+          <MobileMenuButton onClick={() => setMobileMenuOpen(true)} />
+          <DesktopLanguageWrapper>
+            <Dropdown 
+              menu={languageMenu} 
+              trigger={['click']}
+              getPopupContainer={(trigger) => trigger.parentNode}
+            >
+              <LanguageButton>
+                <StyledLanguageIcon className="language-icon" />
+                <StyledLanguageText className="language-text">
+                  {t('header.language')}
+                </StyledLanguageText>
+              </LanguageButton>
+            </Dropdown>
+          </DesktopLanguageWrapper>
+          <MobileLanguageWrapper>
+            <Dropdown 
+              menu={languageMenu} 
+              trigger={['click']}
+              getPopupContainer={(trigger) => trigger.parentNode}
+            >
+              <LanguageIcon />
+            </Dropdown>
+          </MobileLanguageWrapper>
+        </MenuAndLanguageSection>
+      </RightSection>
 
-      <Menu
-        theme="dark"
-        mode="horizontal"
-        selectedKeys={getSelectedKeys()}
-        onClick={handleMenuClick}
-        style={{ flex: 1 }}
+      <Drawer
+        title={t('header.menu')}
+        placement="right"
+        open={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        styles={{ body: { padding: 0 } }}
       >
-        <Menu.Item key="1" icon={<HomeOutlined />}>
-          {t('home.title')}
-        </Menu.Item>
-        <Menu.Item key="2" icon={<LineChartOutlined />}>
-          {t('company.operationalStatus')}
-        </Menu.Item>
-      </Menu>
-
-      <Dropdown menu={languageMenu} trigger={['click']} placement="bottomRight">
-        <span style={{ cursor: 'pointer', color: 'white', marginLeft: '20px' }}>
-          <GlobalOutlined /> {t('header.language')}
-        </span>
-      </Dropdown>
-    </Header>
+        <Menu
+          theme="light"
+          mode="vertical"
+          selectedKeys={getSelectedKeys()}
+          items={menuItems}
+          onClick={(e) => {
+            handleMenuClick(e);
+            setMobileMenuOpen(false);
+          }}
+        />
+      </Drawer>
+    </StyledHeader>
   );
 };
 

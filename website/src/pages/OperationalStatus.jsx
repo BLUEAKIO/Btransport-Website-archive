@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Row, Col, Card, Table, Tag } from 'antd';
 import { companies } from '../data/lines';
@@ -24,15 +24,15 @@ const OperationalStatus = () => {
     };
   }, [i18n, currentLanguage]);
 
-  const statusList = [
+  const statusList = useMemo(() => [
     { key: 'normal', color: 'green' },
     { key: 'delay', color: 'yellow' },
     { key: 'partialSuspension', color: 'orange' },
     { key: 'termination', color: 'gray' },
     { key: 'suspended', color: 'red' },
-  ];
+  ], []);
 
-  const data = companies.flatMap((company) =>
+  const data = useMemo(() => companies.flatMap((company) =>
     company.lines.map((line) => {
       const status = statusList.find(s => s.key === line.operationalStatus) || statusList[0];
       const companyName = company.name[currentLanguage] || company.name['en'];
@@ -49,9 +49,9 @@ const OperationalStatus = () => {
         operationalStatus: operationalInfo,
       };
     })
-  );
+  ), [companies, currentLanguage, statusList, t]);
 
-  const columns = [
+  const columns = useMemo(() => [
     {
       title: t('timetable.line'),
       dataIndex: 'line',
@@ -67,7 +67,7 @@ const OperationalStatus = () => {
       dataIndex: 'operationalStatus',
       key: 'operationalStatus',
     },
-  ];
+  ], [t]);
 
   return (
     <Row justify="center" style={{ marginTop: '20px' }}>
@@ -77,9 +77,9 @@ const OperationalStatus = () => {
           <Table
             columns={columns}
             dataSource={data}
-            pagination={false}
+            pagination={{ pageSize: 10 }}
             bordered
-            scroll={{ x: true }}
+            scroll={{ x: 'max-content' }}
             style={{ width: '100%' }}
           />
         </Card>
