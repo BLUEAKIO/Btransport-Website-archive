@@ -1,4 +1,8 @@
 {
+  "404": {
+    "message": "抱歉，您造訪的頁面不存在。",
+    "backHome": "返回首頁"
+  },
   "home": {
     "title": "首頁",
     "welcome": "歡迎來到 BTransport",
