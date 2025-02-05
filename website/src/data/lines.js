@@ -69,20 +69,6 @@ export const companies = [
     },
     lines: [
       {
-        id: 'SH', 
-        name: {
-          'zh-CN': '新北线',
-          'zh-HK': '新北綫',
-          'en': 'SK Hokkaido Line',
-        },
-        operationalStatus: 'normal',
-        operationalInfo: {
-          'zh-CN': '正常运营',
-          'zh-HK': '正常運營',
-          'en': 'Operating normally',
-        },
-      },
-      {
         id: 'SK',
         name: {
           'zh-CN': '新港线',
@@ -96,6 +82,21 @@ export const companies = [
           'en': 'Operating normally',
         },
       },
+      {
+        id: 'SH', 
+        name: {
+          'zh-CN': '新北线',
+          'zh-HK': '新北綫',
+          'en': 'SK Hokkaido Line',
+        },
+        operationalStatus: 'normal',
+        operationalInfo: {
+          'zh-CN': '正常运营',
+          'zh-HK': '正常運營',
+          'en': 'Operating normally',
+        },
+      },
+      
     ],
   },
 ];
