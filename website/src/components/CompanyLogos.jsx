@@ -25,7 +25,7 @@ const CompanyLogos = () => {
             >
               <Space align="center" direction="vertical">
                 <img
-                  src={`/assetc/companies/${company.id}.png`}
+                  src={`/assets/companies/${company.id}.png`}
                   alt={company.name.en}
                   style={{ 
                     height: 60,
