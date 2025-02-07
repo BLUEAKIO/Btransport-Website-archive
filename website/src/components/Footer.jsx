@@ -53,10 +53,10 @@ const LinkSpace = styled(Space)`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 8px !important; // 统一设置间距
+  gap: 8px !important;
 
   .ant-space-item {
-    margin-right: 0 !important; // 覆盖 Space 默认的 margin
+    margin-right: 0 !important;
   }
 
   @media screen and (max-width: 768px) {
@@ -169,10 +169,11 @@ const AppFooter = () => {
                 }}>|</span>
               }
             >
-              <a href="https://www.blueakio.com" style={{fontSize: "12px"}}>{t("BLUEAKIO.website")}</a>
-              <a href="https://design.blueakio.com" style={{fontSize: "12px"}}>{t("BLUEAKIO.DesignBLUEAKIO")}</a>
-              <a href="https://transport.blueakio.com" style={{fontSize: "12px"}}>{t("BLUEAKIO.BTransport")}</a>
-              <a href="https://tc.blueakio.com" style={{fontSize: "12px"}}>{t("BLUEAKIO.TangibleCraft")}</a>
+              <a href="https://www.blueakio.com" style={{fontSize: "12px"}} target="_blank">{t("BLUEAKIO.website")}</a>
+              <a href="https://design.blueakio.com" style={{fontSize: "12px"}} target="_blank">{t("BLUEAKIO.DesignBLUEAKIO")}</a>
+              <a href="https://transport.blueakio.com" style={{fontSize: "12px"}} target="_blank">{t("BLUEAKIO.BTransport")}</a>
+              <a href="https://tc.blueakio.com" style={{fontSize: "12px"}} target="_blank">{t("BLUEAKIO.TangibleCraft")}</a>
+              <a href="https://status.blueakio.com" style={{fontSize: "12px"}} target="_blank">{t("BLUEAKIO.status")}</a>
             </LinkSpace>
           </BottomCol>
           <BottomCol>
