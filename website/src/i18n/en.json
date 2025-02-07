@@ -68,6 +68,7 @@
     "website": "Official Website",
     "DesignBLUEAKIO": "DesignBLUEAKIO",
     "BTransport": "BTransport",
-    "TangibleCraft": "TangibleCraft"
+    "TangibleCraft": "TangibleCraft",
+    "status": "Network Status"
   }
 }
