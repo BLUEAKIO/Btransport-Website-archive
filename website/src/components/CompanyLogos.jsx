@@ -20,7 +20,7 @@ const CompanyLogos = () => {
           <Col key={company.id}>
             <Card
               hoverable
-              onClick={() => navigate(`/companies/${company.id}`)}
+              onClick={() => navigate(`/company/${company.id}`)}
               bodyStyle={{ padding: 16, textAlign: 'center' }}
             >
               <Space align="center" direction="vertical">

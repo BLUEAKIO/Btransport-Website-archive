@@ -6,7 +6,7 @@
   "home": {
     "title": "首頁",
     "welcome": "歡迎來到 BTransport",
-    "company": "加入的公司名單"
+    "company": "加入的公司"
   },
   "lines": {
     "title": "線路",
@@ -68,7 +68,13 @@
     "website": "官方網站",
     "DesignBLUEAKIO": "DesignBLUEAKIO",
     "BTransport": "BTransport",
-    "TangibleCraft": "堂瞰工藝",
-    "status": "服務狀態"
+    "TangibleCraft": "TangibleCraft",
+    "status": "網絡狀態"
+  },
+  "companyDetail": {
+    "title": "公司簡介",
+    "history": "公司歷史",
+    "services": "主要服務",
+    "backToHome": "返回首頁"
   }
 }

@@ -1,103 +1,144 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Row, Col, Card, Typography, Table, Tag, Button } from 'antd';
-import { HomeOutlined } from '@ant-design/icons';
+import { Typography, Card, Table, Tag } from 'antd';
 import { companies } from '../data/lines';
+import { statusList } from '../utils/statusConfig';
+import './CompanyDetail.css';
 
 const { Title, Paragraph } = Typography;
 
 const CompanyDetail = () => {
   const { companyId } = useParams();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
-  const company = companies.find((c) => c.id === companyId);
+  const company = React.useMemo(() => 
+    companies.find((c) => c.id === companyId),
+    [companyId]
+  );
 
   if (!company) {
     return <div>{t('notFound.company')}</div>;
   }
 
-  const columns = [
+  const getLocalizedText = (textObj) => {
+    if (!textObj) return '';
+    if (typeof textObj === 'string') return textObj;
+    if (typeof textObj !== 'object') return String(textObj);
+    return textObj[i18n.language] || textObj.en || '';
+  };
+
+  const resources = [
     {
-      title: t('company.lineName'),
-      dataIndex: 'name',
-      key: 'name',
+      title: t('company.website'),
+      description: 'Official website',
+      link: company.website
     },
     {
-      title: t('company.status'),
-      dataIndex: 'operationalStatus',
-      key: 'status',
-      render: (status) => {
-        let color = 'green';
-        let text = t('status.normal');
-        if (status === 'partialSuspension') {
-          color = 'orange';
-          text = t('status.partialSuspension');
-        } else if (status === 'fullSuspension') {
-          color = 'red';
-          text = t('status.fullSuspension');
-        }
-        return <Tag color={color}>{text}</Tag>;
-      },
+      title: t('company.forum'),
+      description: 'Community discussions',
+      link: company.forum
     },
     {
-      title: t('company.details'),
-      dataIndex: 'operationalInfo',
-      key: 'details',
-    },
+      title: t('company.socialMedia'),
+      description: 'Social media links',
+      link: company.socialMedia
+    }
   ];
 
+  const getStatusColor = (status) => {
+    const statusConfig = statusList.find((s) => s.key === status);
+    return statusConfig ? statusConfig.color : 'gray';
+  };
+
   return (
-    <div style={{ padding: '24px' }}>
-      {/* 公司头部 */}
-      <Row justify="center" style={{ marginBottom: '24px' }}>
-        <Col>
-          <img
-            src={`/companies/company_${company.id}.png`}
-            alt={company.name.en}
-            style={{ height: '80px', marginBottom: '16px' }}
-          />
-          <Title level={2} style={{ textAlign: 'center' }}>
-            {company.name[t('i18n.language')]}
+    <div className="company-container">
+      {/* Sidebar */}
+      <div className="company-sidebar">
+        <img
+          src={`/assets/companies/${company.id}.png`}
+          alt={getLocalizedText(company.name)}
+          className="company-logo"
+        />
+        
+        {/* Resources Section */}
+        <div className="resource-section">
+          <Title level={4} className="section-title">
+            {t('company.resources')}
           </Title>
-        </Col>
-      </Row>
+          {resources.map((resource, index) => (
+            <Card key={index} className="resource-card">
+              <h3>{resource.title}</h3>
+              <p className="resource-meta">{resource.description}</p>
+              <a href={resource.link} target="_blank" rel="noreferrer">
+                {t('company.visit')}
+              </a>
+            </Card>
+          ))}
+        </div>
+      </div>
 
-      {/* 主体内容 */}
-      <Row gutter={[24, 24]}>
-        {/* 公司简介 */}
-        <Col xs={24} md={12}>
-          <Card title={t('company.introduction')}>
-            <Paragraph>
-              {company.description[t('i18n.language')]}
-            </Paragraph>
-          </Card>
-        </Col>
+      {/* Main Content */}
+      <div className="company-main">
+        <div className="company-header">
+          <Title level={2} className="company-title">
+            {getLocalizedText(company.name)}
+          </Title>
+          <Paragraph className="company-description">
+            {getLocalizedText(company.description)}
+          </Paragraph>
+        </div>
 
-        {/* 运营线路 */}
-        <Col xs={24} md={12}>
-          <Card title={t('company.operationalStatus')}>
-            <Table
-              dataSource={company.lines}
-              columns={columns}
-              pagination={false}
-              rowKey="id"
-            />
-          </Card>
-        </Col>
-      </Row>
-
-      {/* 返回按钮 */}
-      <Row justify="center" style={{ marginTop: '24px' }}>
-        <Button
-          type="primary"
-          icon={<HomeOutlined />}
-          onClick={() => navigate('/')}
-        >
-          {t('backToHome')}
-        </Button>
-      </Row>
+        {/* Operation Status Section */}
+        <div className="operation-status">
+          <Title level={4} className="section-title">
+            {t('company.operationStatus')}
+          </Title>
+          <Table
+            columns={[
+              {
+                title: t('timetable.line'),
+                dataIndex: 'line',
+                key: 'line',
+              },
+              {
+                title: t('company.operationalStatus'),
+                dataIndex: 'status',
+                key: 'status',
+              },
+              {
+                title: t('company.operationalInformation'),
+                dataIndex: 'operationalInfo',
+                key: 'operationalInfo',
+              },
+              {
+                title: t('company.lastUpdate'),
+                dataIndex: 'lastUpdate',
+                key: 'lastUpdate',
+              }
+            ]}
+            dataSource={company.lines?.map((line) => {
+              const statusColor = getStatusColor(line.operationalStatus);
+              return {
+                key: line.id,
+                line: getLocalizedText(line.name),
+                status: (
+                  <Tag color={statusColor}>
+                    {t(`status.${line.operationalStatus}`)}
+                  </Tag>
+                ),
+                operationalInfo: getLocalizedText(line.operationalInfo),
+                lastUpdate: new Date().toLocaleString()
+              };
+            })}
+            pagination={false}
+            bordered
+            size="middle"
+          />
+        </div>
+      </div>
     </div>
   );
 };

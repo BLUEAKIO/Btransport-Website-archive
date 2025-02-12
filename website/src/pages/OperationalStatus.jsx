@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Row, Col, Card, Table, Tag } from 'antd';
 import { companies } from '../data/lines';
+import { statusList } from '../utils/statusConfig';
 
 const OperationalStatus = () => {
   const { t, i18n } = useTranslation();
@@ -24,13 +25,6 @@ const OperationalStatus = () => {
     };
   }, [i18n, currentLanguage]);
 
-  const statusList = useMemo(() => [
-    { key: 'normal', color: 'green' },
-    { key: 'delay', color: 'yellow' },
-    { key: 'partialSuspension', color: 'orange' },
-    { key: 'termination', color: 'gray' },
-    { key: 'suspended', color: 'red' },
-  ], []);
 
   const data = useMemo(() => companies.flatMap((company) =>
     company.lines.map((line) => {
