@@ -39,18 +39,6 @@ const CompanyDetail = React.memo(() => {
         link: company.website || '#',
         type: 'website'
       },
-      {
-        title: t('company.forum'),
-        description: 'Community discussions',
-        link: company.forum || '#',
-        type: 'forum'
-      },
-      {
-        title: t('company.socialMedia'),
-        description: 'Social media links',
-        link: company.socialMedia || '#',
-        type: 'social'
-      }
     ];
   }, [t, company]);
 

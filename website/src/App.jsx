@@ -4,8 +4,6 @@ import { Layout } from 'antd';
 import NavHeader from './components/Header';
 import AppFooter from './components/Footer';
 import Home from './pages/Home';
-import Lines from './pages/Lines';
-import LineDetail from './pages/LineDetail';
 import CompanyDetail from './pages/CompanyDetail';
 import OperationalStatus from './pages/OperationalStatus';
 import NotFound from './pages/404';
@@ -20,8 +18,6 @@ const App = () => {
       <Content style={{ padding: '0 20px', marginTop: 64 }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/lines" element={<Lines />} />
-          <Route path="/lines/:companyId/:lineId" element={<LineDetail />} />
           <Route path="/company/:companyId" element={<CompanyDetail />} />
           <Route path="/train_info" element={<OperationalStatus />} />
           <Route path="*" element={<NotFound />} />

@@ -288,6 +288,9 @@ const NavHeader = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const getSelectedKeys = () => {
+    if (location.pathname.startsWith('/company/')) {
+      return ['companies'];
+    }
     switch (location.pathname) {
       case '/':
         return ['1'];
@@ -326,6 +329,40 @@ const NavHeader = () => {
       key: '2',
       icon: <LineChartOutlined />,
       label: t('company.operationalStatus')
+    },
+    {
+      key: 'companies',
+      icon: <LineChartOutlined style={{ color: location.pathname.startsWith('/company/') ? '#ffffff' : 'rgba(255, 255, 255, 0.65)' }} />,
+      label: (
+        <span style={{ color: location.pathname.startsWith('/company/') ? '#ffffff' : 'rgba(255, 255, 255, 0.65)' }}>
+          {t('header.company')}
+        </span>
+      ),
+      children: companies.map(company => ({
+        key: company.id,
+        label: (
+          <span style={{ 
+            color: location.pathname === `/company/${company.id}` ? '#ffffff' : '#000000',
+            transition: 'color 0.3s'
+          }}>
+            {company.name[i18n.language] || company.name.en} ({company.id})
+          </span>
+        ),
+        style: { 
+          backgroundColor: location.pathname === `/company/${company.id}` ? '#1890ff' : 'transparent',
+          transition: 'background-color 0.3s'
+        },
+        className: 'ant-menu-item',
+        onClick: () => navigate(`/company/${company.id}`),
+        onMouseEnter: (e) => {
+          e.domEvent.currentTarget.style.backgroundColor = '#1890ff';
+          e.domEvent.currentTarget.querySelector('span').style.color = '#ffffff';
+        },
+        onMouseLeave: (e) => {
+          e.domEvent.currentTarget.style.backgroundColor = location.pathname === `/company/${company.id}` ? '#1890ff' : 'transparent';
+          e.domEvent.currentTarget.querySelector('span').style.color = location.pathname === `/company/${company.id}` ? '#ffffff' : 'rgba(255, 255, 255, 0.65)';
+        }
+      }))
     }
   ];
 
@@ -345,24 +382,6 @@ const NavHeader = () => {
         <LogoWrapper onClick={() => navigate('/')}>
           <img src={logo} alt="Site Logo" />
         </LogoWrapper>
-        <Dropdown 
-          menu={{
-            items: companies.map(company => ({
-              key: company.id,
-              label: `${company.name[i18n.language] || company.name.en} (${company.id})`
-            })),
-            onClick: (e) => navigate(`/company/${e.key}`)
-          }}
-          trigger={['click']}
-          getPopupContainer={(trigger) => trigger.parentNode}
-        >
-          <CompanyButton>
-            <CompanyIcon className="company-icon" />
-            <CompanyText className="company-text">
-              {t('header.company')}
-            </CompanyText>
-          </CompanyButton>
-        </Dropdown>
         <StyledMenu
           theme="dark"
           mode="horizontal"
