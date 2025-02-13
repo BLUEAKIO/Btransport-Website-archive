@@ -40,7 +40,8 @@
   },
   "header": {
     "menu": "Menu",
-    "language": "Language"
+    "language": "Language",
+    "company": "Company"
   },
   "footer": {
     "beta": "This page is in BETA state, reliability is not guaranteed.",

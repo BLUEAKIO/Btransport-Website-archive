@@ -30,7 +30,8 @@
   },
   "header": {
     "menu": "菜單",
-    "language": "語言"
+    "language": "語言",
+    "company": "公司"
   },
   "footer": {
     "beta": "頁面處於 BETA 狀態，不保證可靠度",

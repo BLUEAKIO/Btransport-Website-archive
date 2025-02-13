@@ -5,6 +5,7 @@ import { HomeOutlined, LineChartOutlined, GlobalOutlined, MenuOutlined } from '@
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.svg';
+import { companies } from '../data/lines';
 
 const { Header } = Layout;
 
@@ -25,6 +26,37 @@ const StyledHeader = styled(Header)`
 const LeftSection = styled.div`
   display: flex;
   align-items: center;
+  gap: 10px;
+`;
+
+const CompanyButton = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 20px;
+  transition: color 0.3s;
+
+  &:hover {
+    .company-icon {
+      color: #ffffff;
+    }
+    .company-text {
+      color: #ffffff;
+    }
+  }
+`;
+
+const CompanyIcon = styled(LineChartOutlined)`
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 18px;
+  transition: color 0.3s;
+`;
+
+const CompanyText = styled.span`
+  color: rgba(255, 255, 255, 0.65);
+  transition: color 0.3s;
 `;
 
 const RightSection = styled.div`
@@ -35,7 +67,7 @@ const RightSection = styled.div`
 const MenuAndLanguageSection = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 `;
 
 const LogoWrapper = styled.div`
@@ -313,6 +345,24 @@ const NavHeader = () => {
         <LogoWrapper onClick={() => navigate('/')}>
           <img src={logo} alt="Site Logo" />
         </LogoWrapper>
+        <Dropdown 
+          menu={{
+            items: companies.map(company => ({
+              key: company.id,
+              label: `${company.name[i18n.language] || company.name.en} (${company.id})`
+            })),
+            onClick: (e) => navigate(`/company/${e.key}`)
+          }}
+          trigger={['click']}
+          getPopupContainer={(trigger) => trigger.parentNode}
+        >
+          <CompanyButton>
+            <CompanyIcon className="company-icon" />
+            <CompanyText className="company-text">
+              {t('header.company')}
+            </CompanyText>
+          </CompanyButton>
+        </Dropdown>
         <StyledMenu
           theme="dark"
           mode="horizontal"
