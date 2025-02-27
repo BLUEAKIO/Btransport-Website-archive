@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import RealTimeInfo from '../components/features/RealTimeInfo';
-import CarouselBanner from '../components/features/CarouselBanner';
-import CompanyLogos from '../components/features/CompanyLogos';
+import RealTimeInfo from '../components/RealTimeInfo';
+import CarouselBanner from '../components/CarouselBanner';
+import CompanyLogos from '../components/CompanyLogos';
 
 const Home = () => {
   return (

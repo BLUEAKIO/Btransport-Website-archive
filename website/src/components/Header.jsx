@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import type { MenuProps } from 'antd';
-import type { MenuInfo } from 'rc-menu/lib/interface';
 import styled from 'styled-components';
 import { Layout, Menu, Dropdown, Drawer, Select } from 'antd';
 import { HomeOutlined, LineChartOutlined, GlobalOutlined, MenuOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
-import logo from '/assets/BTransport-Logo-White.svg?url';
-import { useGetCompaniesQuery } from '../../store/features/apiSlice';
-import type { Company } from '../../types';
+import logo from '../assets/logo.svg';
 
 const { Header } = Layout;
 
@@ -29,37 +25,6 @@ const StyledHeader = styled(Header)`
 const LeftSection = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
-`;
-
-const CompanyButton = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  padding: 4px;
-  margin-left: 20px;
-  transition: color 0.3s;
-
-  &:hover {
-    .company-icon {
-      color: #ffffff;
-    }
-    .company-text {
-      color: #ffffff;
-    }
-  }
-`;
-
-const CompanyIcon = styled(LineChartOutlined)`
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 18px;
-  transition: color 0.3s;
-`;
-
-const CompanyText = styled.span`
-  color: rgba(255, 255, 255, 0.65);
-  transition: color 0.3s;
 `;
 
 const RightSection = styled.div`
@@ -70,7 +35,7 @@ const RightSection = styled.div`
 const MenuAndLanguageSection = styled.div`
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 `;
 
 const LogoWrapper = styled.div`
@@ -222,15 +187,11 @@ const LanguageIcon = styled(GlobalOutlined)`
   }
 `;
 
-interface LanguageTextProps {
-  $isHovered?: boolean;
-}
-
-const LanguageText = styled.span<LanguageTextProps>`
+const LanguageText = styled.span`
   color: rgba(255, 255, 255, 0.65);
   transition: color 0.3s;
   
-  ${({ $isHovered }) => $isHovered && `
+  ${({ isHovered }) => isHovered && `
     color: #ffffff;
   `}
 `;
@@ -288,9 +249,6 @@ const StyledLanguageText = styled.span`
   transition: color 0.3s;
 `;
 
-
-type MenuItem = Required<MenuProps>['items'][number];
-
 const NavHeader = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -298,9 +256,6 @@ const NavHeader = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const getSelectedKeys = () => {
-    if (location.pathname.startsWith('/company/')) {
-      return ['companies'];
-    }
     switch (location.pathname) {
       case '/':
         return ['1'];
@@ -311,8 +266,8 @@ const NavHeader = () => {
     }
   };
 
-  const handleMenuClick = (info: MenuInfo) => {
-    switch (info.key) {
+  const handleMenuClick = (e) => {
+    switch (e.key) {
       case '1':
         navigate('/');
         break;
@@ -325,13 +280,11 @@ const NavHeader = () => {
   };
 
   // 语言切换处理函数
-  const handleLanguageChange = (info: MenuInfo) => {
-    i18n.changeLanguage(info.key);
+  const handleLanguageChange = (e) => {
+    i18n.changeLanguage(e.key);
   };
 
-  const { data: companies = [], isLoading } = useGetCompaniesQuery();
-
-  const menuItems: MenuItem[] = [
+  const menuItems = [
     {
       key: '1',
       icon: <HomeOutlined />,
@@ -341,52 +294,11 @@ const NavHeader = () => {
       key: '2',
       icon: <LineChartOutlined />,
       label: t('company.operationalStatus')
-    },
-    {
-      key: 'companies',
-      icon: <LineChartOutlined style={{ color: location.pathname.startsWith('/company/') ? '#ffffff' : 'rgba(255, 255, 255, 0.65)' }} />,
-      label: (
-        <span style={{ color: location.pathname.startsWith('/company/') ? '#ffffff' : 'rgba(255, 255, 255, 0.65)' }}>
-          {t('header.company')}
-        </span>
-      ),
-      children: isLoading ? [] : companies.map((company: Company) => ({
-        type: 'group',
-        key: company.id,
-        label: (
-          <span style={{ 
-            color: location.pathname === `/company/${company.id}` ? '#ffffff' : '#000000',
-            transition: 'color 0.3s'
-          }}>
-            {company.name[i18n.language] || company.name.en} ({company.id})
-          </span>
-        ),
-        style: { 
-          backgroundColor: location.pathname === `/company/${company.id}` ? '#1890ff' : 'transparent',
-          transition: 'background-color 0.3s'
-        },
-        className: 'ant-menu-item',
-        onClick: () => navigate(`/company/${company.id}`),
-        onMouseEnter: (e: React.MouseEvent<HTMLElement>) => {
-          e.currentTarget.style.backgroundColor = '#1890ff';
-          const span = e.currentTarget.querySelector('span');
-          if (span) {
-            span.style.color = '#ffffff';
-          }
-        },
-        onMouseLeave: (e: React.MouseEvent<HTMLElement>) => {
-          e.currentTarget.style.backgroundColor = location.pathname === `/company/${company.id}` ? '#1890ff' : 'transparent';
-          const span = e.currentTarget.querySelector('span');
-          if (span) {
-            span.style.color = location.pathname === `/company/${company.id}` ? '#ffffff' : 'rgba(255, 255, 255, 0.65)';
-          }
-        }
-      }))
     }
   ];
 
   // 语言菜单配置
-  const languageMenu: MenuProps = {
+  const languageMenu = {
     items: [
       { key: 'zh-CN', label: '简体中文 (中国大陆)' },
       { key: 'zh-HK', label: '繁體中文 (中國香港)' },
@@ -417,7 +329,7 @@ const NavHeader = () => {
             <Dropdown 
               menu={languageMenu} 
               trigger={['click']}
-              getPopupContainer={(trigger) => trigger.parentElement as HTMLElement}
+              getPopupContainer={(trigger) => trigger.parentNode}
             >
               <LanguageButton>
                 <StyledLanguageIcon className="language-icon" />
@@ -431,7 +343,7 @@ const NavHeader = () => {
             <Dropdown 
               menu={languageMenu} 
               trigger={['click']}
-              getPopupContainer={(trigger) => trigger.parentElement as HTMLElement}
+              getPopupContainer={(trigger) => trigger.parentNode}
             >
               <LanguageIcon />
             </Dropdown>

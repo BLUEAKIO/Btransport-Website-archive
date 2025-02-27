@@ -22,17 +22,7 @@
     "lineMap": "Interactive Line Map",
     "operationalStatus": "Operational Status",
     "operationalInformation": "Operational Information", 
-    "noDelays": "No delays reported.",
-    "history": "History",
-    "scale": "Scale",
-    "employees": "Employees: {count}",
-    "stations": "Stations: {count}",
-    "linesCount": "Lines: {count}",
-    "services": "Services",
-    "resources": "Resources",
-    "website": "Official Website",
-    "forum": "Discussion Forum",
-    "socialMedia": "Social Media"
+    "noDelays": "No delays reported."
   },
   "line": {
     "map": "Line Map",
@@ -40,8 +30,7 @@
   },
   "header": {
     "menu": "Menu",
-    "language": "Language",
-    "company": "Company"
+    "language": "Language"
   },
   "footer": {
     "beta": "This page is in BETA state, reliability is not guaranteed.",
@@ -81,11 +70,5 @@
     "BTransport": "BTransport",
     "TangibleCraft": "TangibleCraft",
     "status": "Network Status"
-  },
-  "companyDetail": {
-    "title": "Company Profile",
-    "history": "Company History",
-    "services": "Main Services",
-    "backToHome": "Back to Home"
   }
 }
