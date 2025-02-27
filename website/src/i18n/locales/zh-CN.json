@@ -6,7 +6,7 @@
   "home": {
     "title": "首页",
     "welcome": "欢迎来到 BTransport",
-    "company": "加入的公司列表"
+    "company": "加入的公司"
   },
   "lines": {
     "title": "线路",
@@ -22,7 +22,13 @@
     "lineMap": "交互式线路图",
     "operationalStatus": "运营状态",
     "operationalInformation": "运营信息",
-    "noDelays": "无延误报告。"
+    "noDelays": "无延误报告。",
+    "history": "历史",
+    "scale": "规模",
+    "employees": "员工数量：{count}",
+    "stations": "车站数量：{count}",
+    "linesCount": "运营线路数量：{count}",
+    "services": "服务项目"
   },
   "line": {
     "map": "线路图",
@@ -30,6 +36,7 @@
   },
   "header": {
     "menu": "菜单",
+    "company": "公司列表",
     "language": "语言"
   },
   "footer": {
@@ -68,7 +75,13 @@
     "website": "官方网站",
     "DesignBLUEAKIO": "DesignBLUEAKIO",
     "BTransport": "BTransport",
-    "TangibleCraft": "堂瞰工艺",
-    "status": "服务状态"
+    "TangibleCraft": "TangibleCraft",
+    "status": "网络状态"
+  },
+  "companyDetail": {
+    "title": "公司简介",
+    "history": "公司历史",
+    "services": "主要服务",
+    "backToHome": "返回首页"
   }
 }
