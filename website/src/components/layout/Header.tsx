@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import type { MenuProps } from 'antd';
+import type { MenuInfo } from 'rc-menu/lib/interface';
 import styled from 'styled-components';
 import { Layout, Menu, Dropdown, Drawer, Select } from 'antd';
 import { HomeOutlined, LineChartOutlined, GlobalOutlined, MenuOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
-import logo from '../assets/logo.svg';
-import { companies } from '../data/lines';
+import logo from '/assets/BTransport-Logo-White.svg?url';
+import { useGetCompaniesQuery } from '../../store/features/apiSlice';
+import type { Company } from '../../types';
 
 const { Header } = Layout;
 
@@ -219,11 +222,15 @@ const LanguageIcon = styled(GlobalOutlined)`
   }
 `;
 
-const LanguageText = styled.span`
+interface LanguageTextProps {
+  $isHovered?: boolean;
+}
+
+const LanguageText = styled.span<LanguageTextProps>`
   color: rgba(255, 255, 255, 0.65);
   transition: color 0.3s;
   
-  ${({ isHovered }) => isHovered && `
+  ${({ $isHovered }) => $isHovered && `
     color: #ffffff;
   `}
 `;
@@ -281,6 +288,9 @@ const StyledLanguageText = styled.span`
   transition: color 0.3s;
 `;
 
+
+type MenuItem = Required<MenuProps>['items'][number];
+
 const NavHeader = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -301,8 +311,8 @@ const NavHeader = () => {
     }
   };
 
-  const handleMenuClick = (e) => {
-    switch (e.key) {
+  const handleMenuClick = (info: MenuInfo) => {
+    switch (info.key) {
       case '1':
         navigate('/');
         break;
@@ -315,11 +325,13 @@ const NavHeader = () => {
   };
 
   // 语言切换处理函数
-  const handleLanguageChange = (e) => {
-    i18n.changeLanguage(e.key);
+  const handleLanguageChange = (info: MenuInfo) => {
+    i18n.changeLanguage(info.key);
   };
 
-  const menuItems = [
+  const { data: companies = [], isLoading } = useGetCompaniesQuery();
+
+  const menuItems: MenuItem[] = [
     {
       key: '1',
       icon: <HomeOutlined />,
@@ -338,7 +350,8 @@ const NavHeader = () => {
           {t('header.company')}
         </span>
       ),
-      children: companies.map(company => ({
+      children: isLoading ? [] : companies.map((company: Company) => ({
+        type: 'group',
         key: company.id,
         label: (
           <span style={{ 
@@ -354,20 +367,26 @@ const NavHeader = () => {
         },
         className: 'ant-menu-item',
         onClick: () => navigate(`/company/${company.id}`),
-        onMouseEnter: (e) => {
-          e.domEvent.currentTarget.style.backgroundColor = '#1890ff';
-          e.domEvent.currentTarget.querySelector('span').style.color = '#ffffff';
+        onMouseEnter: (e: React.MouseEvent<HTMLElement>) => {
+          e.currentTarget.style.backgroundColor = '#1890ff';
+          const span = e.currentTarget.querySelector('span');
+          if (span) {
+            span.style.color = '#ffffff';
+          }
         },
-        onMouseLeave: (e) => {
-          e.domEvent.currentTarget.style.backgroundColor = location.pathname === `/company/${company.id}` ? '#1890ff' : 'transparent';
-          e.domEvent.currentTarget.querySelector('span').style.color = location.pathname === `/company/${company.id}` ? '#ffffff' : 'rgba(255, 255, 255, 0.65)';
+        onMouseLeave: (e: React.MouseEvent<HTMLElement>) => {
+          e.currentTarget.style.backgroundColor = location.pathname === `/company/${company.id}` ? '#1890ff' : 'transparent';
+          const span = e.currentTarget.querySelector('span');
+          if (span) {
+            span.style.color = location.pathname === `/company/${company.id}` ? '#ffffff' : 'rgba(255, 255, 255, 0.65)';
+          }
         }
       }))
     }
   ];
 
   // 语言菜单配置
-  const languageMenu = {
+  const languageMenu: MenuProps = {
     items: [
       { key: 'zh-CN', label: '简体中文 (中国大陆)' },
       { key: 'zh-HK', label: '繁體中文 (中國香港)' },
@@ -398,7 +417,7 @@ const NavHeader = () => {
             <Dropdown 
               menu={languageMenu} 
               trigger={['click']}
-              getPopupContainer={(trigger) => trigger.parentNode}
+              getPopupContainer={(trigger) => trigger.parentElement as HTMLElement}
             >
               <LanguageButton>
                 <StyledLanguageIcon className="language-icon" />
@@ -412,7 +431,7 @@ const NavHeader = () => {
             <Dropdown 
               menu={languageMenu} 
               trigger={['click']}
-              getPopupContainer={(trigger) => trigger.parentNode}
+              getPopupContainer={(trigger) => trigger.parentElement as HTMLElement}
             >
               <LanguageIcon />
             </Dropdown>

@@ -1,37 +1,42 @@
-import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { Typography, Card, Table, Tag, Spin, Button } from 'antd';
-import ResourceCard from '../components/ResourceCard';
-import { companies } from '../data/lines';
-import { statusList } from '../utils/statusConfig';
-import './CompanyDetail.css';
+import React, { useMemo } from 'react'
+import PropTypes from 'prop-types'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { Typography, Card, Table, Tag, Spin, Button } from 'antd'
+import ResourceCard from '../components/ResourceCard'
+import { useGetCompanyByIdQuery } from '../store/features/apiSlice'
+import { STATUS_LIST } from '../constants/statusConfig'
+import useLocalizedText from '../hooks/useLocalizedText'
+import './CompanyDetail.css'
 
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph } = Typography
 
-
+/**
+ * 公司详情页面组件
+ * @description 显示公司详细信息，包括运营状态、时刻表等
+ * @returns {JSX.Element} 公司详情页面
+ */
 const CompanyDetail = React.memo(() => {
-  const { companyId } = useParams();
-  const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
-  const [loading, setLoading] = React.useState(false);
+  const { companyId } = useParams() // 从路由参数获取公司ID
+  const { t } = useTranslation() // 国际化翻译hook
+  const navigate = useNavigate() // 路由导航hook
+  const [loading, setLoading] = React.useState(false) // 加载状态
+  const { getLocalizedText } = useLocalizedText() // 本地化文本hook
 
-  const company = React.useMemo(() => {
-    const foundCompany = companies.find((c) => c.id === companyId);
-    setLoading(!foundCompany);
-    return foundCompany;
-  }, [companyId]);
+  // 获取公司数据
+  const { data: company, isLoading, isError } = useGetCompanyByIdQuery(companyId)
+  
+  // 错误处理
+  React.useEffect(() => {
+    if (isError) {
+      setLoading(false)
+      console.error('获取公司数据失败')
+    }
+  }, [isError])
 
-  const getLocalizedText = React.useCallback((textObj) => {
-    if (!textObj) return '';
-    if (typeof textObj === 'string') return textObj;
-    if (typeof textObj !== 'object') return String(textObj);
-    return textObj[i18n.language] || textObj.en || textObj.zh || '';
-  }, [i18n.language]);
-
+  // 公司资源列表
   const resources = React.useMemo(() => {
-    if (!company) return [];
+    if (!company) return []
     return [
       {
         title: t('company.website'),
@@ -39,34 +44,39 @@ const CompanyDetail = React.memo(() => {
         link: company.website || '#',
         type: 'website'
       },
-    ];
-  }, [t, company]);
+    ]
+  }, [t, company])
 
+  /**
+   * 获取状态对应的颜色
+   * @param {string} status - 状态key
+   * @returns {string} 状态对应的颜色
+   */
   const getStatusColor = (status) => {
-    const statusConfig = statusList.find((s) => s.key === status);
-    return statusConfig ? statusConfig.color : 'gray';
-  };
+    const statusConfig = STATUS_LIST.find((s) => s.key === status)
+    return statusConfig ? statusConfig.color : 'gray'
+  }
 
-  // Table Columns Configuration
+  // 表格列配置
   const columns = useMemo(() => [
     {
-      title: t('timetable.line'),
+      title: t('timetable.line'), // 线路名称
       dataIndex: 'line',
       key: 'line',
     },
     {
-      title: t('company.operationalStatus'),
+      title: t('company.operationalStatus'), // 运营状态
       dataIndex: 'status',
       key: 'status',
     },
     {
-      title: t('company.operationalInformation'),
+      title: t('company.operationalInformation'), // 运营信息
       dataIndex: 'operationalInfo',
       key: 'operationalInfo',
     }
-  ], [t]);
+  ], [t])
 
-  if (!company) {
+  if (isError || (!isLoading && !company)) {
     return (
       <div className="error-container">
         <h2>{t('notFound.company')}</h2>
@@ -74,21 +84,20 @@ const CompanyDetail = React.memo(() => {
           {t('common.back')}
         </Button>
       </div>
-    );
+    )
   }
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="loading-container">
         <Spin size="large" />
         <p>{t('common.loading')}</p>
       </div>
-    );
+    )
   }
 
   return (
     <div className="company-container">
-      {/* Sidebar */}
       <div className="company-sidebar">
         <img
           src={`/assets/companies/${company.id}.png`}
@@ -96,7 +105,6 @@ const CompanyDetail = React.memo(() => {
           className="company-logo"
         />
         
-        {/* Resources Section */}
         <div className="resource-section">
           <Title level={4} className="section-title">
             {t('company.resources')}
@@ -113,7 +121,6 @@ const CompanyDetail = React.memo(() => {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="company-main">
         <div className="company-header">
           <Title level={2} className="company-title">
@@ -124,7 +131,6 @@ const CompanyDetail = React.memo(() => {
           </Paragraph>
         </div>
 
-        {/* Operation Status Section */}
         <div className="operation-status">
           <Title level={4} className="section-title">
             {t('company.operationStatus')}
@@ -151,8 +157,8 @@ const CompanyDetail = React.memo(() => {
         </div>
       </div>
     </div>
-  );
-});
+  )
+})
 
 CompanyDetail.propTypes = {
   companyId: PropTypes.string.isRequired,
@@ -160,6 +166,6 @@ CompanyDetail.propTypes = {
   i18n: PropTypes.shape({
     language: PropTypes.string.isRequired
   }).isRequired
-};
+}
 
-export default CompanyDetail;
+export default CompanyDetail
