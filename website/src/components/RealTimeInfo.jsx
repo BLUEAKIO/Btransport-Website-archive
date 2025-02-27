@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Card, List, Tag } from 'antd';
+import { companies } from '../data/lines';
 
 const statusColors = {
   normal: 'green',
@@ -33,53 +34,21 @@ const RealTimeInfo = () => {
     };
   }, [i18n, currentLanguage]);
 
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/companies`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const companies = await response.json();
-        
-        const formattedData = companies.flatMap((company) =>
-          company.lines
-            .filter((line) => line.operationalStatus !== 'normal')
-            .map((line) => {
-              const companyName = company.name[currentLanguage] || company.name['en'];
-              const lineName = line.name[currentLanguage] || line.name['en'];
-              const operationalInfo = line.operationalInfo[currentLanguage] || line.operationalInfo['en'];
-              return {
-                key: `${company.id}-${line.id}`,
-                name: `${companyName} ${lineName}`,
-                status: line.operationalStatus,
-                info: operationalInfo,
-              };
-            })
-        );
-        
-        setData(formattedData);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [currentLanguage]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  const data = companies.flatMap((company) =>
+    company.lines
+      .filter((line) => line.operationalStatus !== 'normal')
+      .map((line) => {
+        const companyName = company.name[currentLanguage] || company.name['en'];
+        const lineName = line.name[currentLanguage] || line.name['en'];
+        const operationalInfo = line.operationalInfo[currentLanguage] || line.operationalInfo['en'];
+        return {
+          key: `${company.id}-${line.id}`,
+          name: `${companyName} ${lineName}`,
+          status: line.operationalStatus,
+          info: operationalInfo,
+        };
+      })
+  );
 
   if (data.length === 0) {
     return (
