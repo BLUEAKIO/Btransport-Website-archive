@@ -6,10 +6,10 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: '' }),
   endpoints: (builder) => ({
     getCompanies: builder.query<Company[], void>({
-      query: () => '/api/companies'
+      query: () => 'companies'
     }),
     getCompanyById: builder.query<Company, string>({
-      query: (id) => `/api/companies/${id}`
+      query: (id) => `companies/${id}`
     })
   })
 })
