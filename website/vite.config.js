@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 import checker from 'vite-plugin-checker'
 import svgr from 'vite-plugin-svgr'
+import { createHtmlPlugin } from 'vite-plugin-html'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,6 +15,16 @@ export default defineConfig({
       },
       include: '**/*.svg',
       exportAsDefault: true,
+    }),
+    createHtmlPlugin({
+      minify: true,
+      entry: '/src/main.tsx',
+      template: 'index.html',
+      inject: {
+        data: {
+          title: 'BTransport'
+        }
+      }
     }),
     // checker({
     //   typescript: {
@@ -48,7 +59,7 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       input: {
-        main: './src/main.tsx'
+        main: path.resolve(__dirname, './index.html')
       },
       output: {
         manualChunks: {
