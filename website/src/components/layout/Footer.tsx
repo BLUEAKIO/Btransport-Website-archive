@@ -1,8 +1,9 @@
 import React from 'react';
+import type { ColProps } from 'antd';
 import { Layout, Row, Col, Space } from 'antd';
 import { useTranslation } from 'react-i18next';
-import Logo from '../assets/logo.svg';
-import BLUEAKIOLogo from '../assets/BLUEAKIO-Logo-White.svg';
+import Logo from '/assets/BTransport-Logo-White.svg?url';
+import BLUEAKIOLogo from '/assets/BLUEAKIO-Logo-White.svg?url';
 import styled from 'styled-components';
 
 const { Footer } = Layout;
@@ -36,7 +37,13 @@ const BottomRow = styled(Row)`
   }
 `;
 
-const BottomCol = styled(Col)`
+interface BottomColProps extends ColProps {
+  align?: string;
+  flex?: string | number;
+  marginLeft?: string | number;
+}
+
+const BottomCol = styled(Col)<BottomColProps>`
   display: flex;
   justify-content: ${props => props.align || 'flex-start'};
   flex: ${props => props.flex || 'none'};
@@ -65,7 +72,11 @@ const LinkSpace = styled(Space)`
   }
 `;
 
-const AppFooter = () => {
+interface FooterProps {
+  // 可以添加需要的props类型
+}
+
+const AppFooter: React.FC<FooterProps> = () => {
   const { t } = useTranslation();
 
   return (
@@ -169,11 +180,11 @@ const AppFooter = () => {
                 }}>|</span>
               }
             >
-              <a href="https://www.blueakio.com" style={{fontSize: "12px"}} target="_blank">{t("BLUEAKIO.website")}</a>
-              <a href="https://design.blueakio.com" style={{fontSize: "12px"}} target="_blank">{t("BLUEAKIO.DesignBLUEAKIO")}</a>
-              <a href="https://transport.blueakio.com" style={{fontSize: "12px"}} target="_blank">{t("BLUEAKIO.BTransport")}</a>
-              <a href="https://tc.blueakio.com" style={{fontSize: "12px"}} target="_blank">{t("BLUEAKIO.TangibleCraft")}</a>
-              <a href="https://status.blueakio.com" style={{fontSize: "12px"}} target="_blank">{t("BLUEAKIO.status")}</a>
+              <a href="https://www.blueakio.com" style={{fontSize: "12px"}} target="_blank" rel="noopener noreferrer">{t("BLUEAKIO.website")}</a>
+              <a href="https://design.blueakio.com" style={{fontSize: "12px"}} target="_blank" rel="noopener noreferrer">{t("BLUEAKIO.DesignBLUEAKIO")}</a>
+              <a href="https://transport.blueakio.com" style={{fontSize: "12px"}} target="_blank" rel="noopener noreferrer">{t("BLUEAKIO.BTransport")}</a>
+              <a href="https://tc.blueakio.com" style={{fontSize: "12px"}} target="_blank" rel="noopener noreferrer">{t("BLUEAKIO.TangibleCraft")}</a>
+              <a href="https://status.blueakio.com" style={{fontSize: "12px"}} target="_blank" rel="noopener noreferrer">{t("BLUEAKIO.status")}</a>
             </LinkSpace>
           </BottomCol>
           <BottomCol>
