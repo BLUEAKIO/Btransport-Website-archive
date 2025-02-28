@@ -1,13 +1,16 @@
 import express from 'express'
 import cors from 'cors'
 import { companies } from './data/lines.js'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const app = express()
-const port = 3001
+const port = process.env.PORT || 3001
 
 // 启用CORS
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000', 'https://transport.blueakio.com'],
+  origin: process.env.CORS_ORIGINS?.split(','),
   credentials: true
 }))
 

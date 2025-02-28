@@ -6,10 +6,10 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_BASE_URL }),
   endpoints: (builder) => ({
     getCompanies: builder.query<Company[], void>({
-      query: () => '/companies'
+      query: () => '/api/companies'
     }),
     getCompanyById: builder.query<Company, string>({
-      query: (id) => `/companies/${id}`
+      query: (id) => `/api/companies/${id}`
     })
   })
 })
