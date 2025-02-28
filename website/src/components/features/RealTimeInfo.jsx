@@ -40,7 +40,7 @@ const RealTimeInfo = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/companies`);
+        const response = await fetch('/api/companies');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

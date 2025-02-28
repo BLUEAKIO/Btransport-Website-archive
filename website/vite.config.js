@@ -26,11 +26,6 @@ export default defineConfig({
         }
       }
     }),
-    // checker({
-    //   typescript: {
-    //     tsconfigPath: './tsconfig.json'
-    //   }
-    // })
   ],
   resolve: {
     alias: {
@@ -49,6 +44,14 @@ export default defineConfig({
     strictPort: true,
     hmr: {
       overlay: true
+    },
+    proxy: {
+      '/api': {
+        target: 'https://api-transport.blueakio.com',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
     }
   },
   build: {
