@@ -3,7 +3,7 @@ import type { Company } from '../../types'
 
 export const apiSlice = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_BASE_URL }),
+  baseQuery: fetchBaseQuery({ baseUrl: '' }),
   endpoints: (builder) => ({
     getCompanies: builder.query<Company[], void>({
       query: () => '/api/companies'
