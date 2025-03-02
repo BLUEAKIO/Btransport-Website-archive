@@ -1,0 +1,19 @@
+export const RATE_LIMIT = {
+  WINDOW_SIZE: 15 * 60 * 1000, // 15 minutes
+  MAX_REQUESTS: 100
+}
+
+export const ERROR_CODES = {
+  VALIDATION_ERROR: 'VALIDATION_ERROR',
+  NOT_FOUND: 'NOT_FOUND',
+  UNAUTHORIZED: 'UNAUTHORIZED',
+  FORBIDDEN: 'FORBIDDEN',
+  INTERNAL_ERROR: 'INTERNAL_ERROR'
+}
+
+export const LOG_LEVELS = {
+  INFO: 'info',
+  WARN: 'warn',
+  ERROR: 'error',
+  DEBUG: 'debug'
+}

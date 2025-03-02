@@ -329,7 +329,8 @@ const NavHeader = () => {
     i18n.changeLanguage(info.key);
   };
 
-  const { data: companies = [], isLoading } = useGetCompaniesQuery();
+  const { data: companiesResponse = { data: [] }, isLoading } = useGetCompaniesQuery({ page: 1, limit: 10 });
+  const companies = companiesResponse.data;
 
   const menuItems: MenuItem[] = [
     {

@@ -1,39 +1,35 @@
 import express from 'express'
 import cors from 'cors'
-import { companies } from './data/lines.js'
 import dotenv from 'dotenv'
+import { connectDB } from './config/db.js'
+import { errorHandler, notFoundHandler } from './src/middlewares/errorHandler.js'
+import apiRoutes from './src/routes/index.js'
 
+// 初始化环境变量
 dotenv.config()
 
+// 创建Express应用
 const app = express()
 const port = process.env.PORT || 3001
 
-// 启用CORS
+// 连接数据库
+connectDB()
+
+// 中间件
 app.use(cors({
   origin: process.env.CORS_ORIGINS?.split(','),
   credentials: true
 }))
+app.use(express.json())
 
-// 获取所有公司数据
-app.get('/api/companies', (req, res) => {
-  res.json(companies)
-})
-
-// 获取单个公司数据
-app.get('/api/companies/:id', (req, res) => {
-  const company = companies.find(c => c.id === req.params.id)
-  if (!company) {
-    return res.status(404).json({ error: 'Company not found' })
-  }
-  res.json(company)
-})
+// 路由
+app.use('/api', apiRoutes)
 
 // 错误处理
-app.use((err, req, res, next) => {
-  console.error(err.stack)
-  res.status(500).json({ error: 'Internal Server Error' })
-})
+app.use(notFoundHandler)
+app.use(errorHandler)
 
+// 启动服务器
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)
 })

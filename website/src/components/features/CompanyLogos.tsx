@@ -27,7 +27,8 @@ const CompanyLogos: React.FC<CompanyLogosProps> = () => {
   const { getLocalizedText } = useLocalizedText<Record<string, string>>()
 
   // 获取公司数据
-  const { data: companies, isLoading, isError } = useGetCompaniesQuery()
+  const { data: companiesResponse = { data: [] }, isLoading, isError } = useGetCompaniesQuery({ page: 1, limit: 10 });
+  const companies = companiesResponse.data;
 
   // 错误处理
   useEffect(() => {

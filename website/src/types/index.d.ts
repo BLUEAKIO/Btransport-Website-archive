@@ -8,6 +8,16 @@ interface ImportMetaEnv {
   readonly VITE_FEATURE_NEW_UI: string
 }
 
+export interface PaginatedResponse<T> {
+  data: T
+  pagination: {
+    page: number
+    limit: number
+    total: number
+    totalPages: number
+  }
+}
+
 export interface Company {
   id: string
   name: Record<string, string>
